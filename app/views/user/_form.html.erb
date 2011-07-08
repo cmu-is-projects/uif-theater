@@ -1,8 +1,9 @@
-<% if @this_action = 'add' %>
-	<%= form_for(@user, :url => user_index_path) do |f| %>
+<% if @this_action == 'add' %>
+	<% this_path = user_index_path %>
 <% else %>
-	<%= form_for(@user, :url => update_user_path) do |f| %>
+	<% this_path = update_user_path %>
 <% end %>
+<%= form_for(@user, :url => this_path) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this item from being saved:</h2>

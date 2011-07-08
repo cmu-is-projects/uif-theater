@@ -25,12 +25,14 @@ class Category < ActiveRecord::Base
   def self.all_ids_associated_with(parent_category)
     sub_ids = Array.new
     p_cat = Category.find_by_name(parent_category)
-    sub_ids << p_cat.id
-    subcats = p_cat.subcategories.map{|s| s}
-    unless subcats.empty? || subcats.nil?
-      subcats.each do |s_cat|
-        sub_ids << s_cat.id
-        s_cat.subcategories.each{|sc| sub_ids << sc.id}
+    unless p_cat.nil?
+      sub_ids << p_cat.id
+      subcats = p_cat.subcategories.map{|s| s}
+      unless subcats.empty? || subcats.nil?
+        subcats.each do |s_cat|
+          sub_ids << s_cat.id
+          s_cat.subcategories.each{|sc| sub_ids << sc.id}
+        end
       end
     end
     sub_ids
