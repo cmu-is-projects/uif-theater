@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <title>UIF Costumes :: <%= controller.controller_name.capitalize %></title>
+  <%= stylesheet_link_tag "forms", "uif_styles", "token-input-facebook", "datagrid" %>
+  <%= javascript_include_tag "jquery.min", "jquery-ui.min", "jquery_ujs", "application", "nested_form", "jquery.tokeninput", "jquery.cycle.lite" %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+	<div id="box">
+		<div id="header">
+			<div id="headerholder">
+				<table id="tableheader">
+					<tr>
+						<td>
+							<div id="logo">
+								<%= link_to(image_tag('layout/logo.png'), home_path) %>
+							</div>
+						</td>
+						<td>
+						
+							<div id="headerimg">
+								<%= image_tag('layout/headerbg6.png') %>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div> <!-- END OF HEADER HOLDER -->
+			
+			<% if current_user %>
+			<div id="nav">
+				<%= render "partials/nav_coordinator" %>
+			</div>
+			<% end %>
+		</div> <!-- END OF HEADER DIV -->
+					
+	  <div id="container">
+		<% flash.each do |name, msg| %>
+		  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+		<% end %>
+		<%= yield %>
+	  </div>
+	  
+	  <div id="footer">
+		<div id="footerinfo">
+			<table width="980px">
+				<tr height="25px"></tr>
+					<tr>
+						<td>
+							<p align="left">801 Union Place, 4th Floor | Pittsburgh, PA 15212
+							</br>
+							P: 412.321.3811 | E: <%= link_to 'info@urbanimpactpittsburgh.org', "mailto:info@urbanimpactpittsburgh.org" %> 
+							</p>
+						</td>
+						
+						<td width="300px"></td>
+						
+						<td>
+							<p align="right">
+								<%= link_to "About", about_path %>
+								|
+								<%= link_to "Loan Policy", policy_path %> 
+								|
+								<a href="http://www.urbanimpactpittsburgh.org/" target="_blank">Urban Impact Home</a>
+							</p>
+						</td>
+					</tr>
+			</table>
+		</div>
+	 </div>
+	  
+	</div> <!-- END OF BOX DIV -->
+</body>
+</html>

@@ -1,0 +1,65 @@
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr>
+		<!-- Main column -->
+		<td valign="top" width="550" class="show">
+			<%= image_tag "forms/show_organization_contact.png" %>
+			<p class="lgtext">
+			  <b><%= @organization.name %></b>
+			</p>
+
+			<p>
+			  <b>Address:</b><br />
+			  <%= @organization.street %><br />
+				<%= @organization.city %>, PA <%= @organization.zip %>
+			</p>
+
+			<p>
+			  <b>Phone:</b>
+			  <%= number_to_phone @organization.phone %>
+			</p>
+
+			<p>
+			  <b>Status:</b>
+			  <% if @organization.active %>
+					Active
+				<% else %>
+					Inactive
+				<% end %>
+			</p>
+			
+		</td>
+		
+		<!-- Spacer column -->
+		<td width="40" rowspan="2">&nbsp;</td>
+		
+		<!-- List column -->
+		<td class="my_list" valign="top" width="300" rowspan="2">
+			<strong>My Current List</strong>
+		</td>
+	</tr>
+	
+	<!-- Bottom left cell -->
+	<tr>
+		<td valign="top" class="show">
+			<%= image_tag "forms/show_organization_members.png" %>
+			<%= render :partial => "organization_members" %>
+			
+		</td>
+	</tr>
+</table>
+<!-- <p class="supertiny">&nbsp;</p> -->
+
+	<% unless @notes.empty? || @notes.nil? %>
+		<p>
+			<strong>Notes:</strong><br />
+			<%= render :partial => "partials/notes_list" %>
+		</p>
+	<% end %>
+
+	<% unless current_user.is_partner? %>
+		<p><strong><%= link_to "Add a note", organization_notes_path(@organization) %></strong> </p>
+		<p><%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_organization_path(@organization))  %>&nbsp;<%= link_to 'Edit this organization', edit_organization_path(@organization) %> &nbsp;|&nbsp;
+			<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), organization_path(@organization), :confirm => 'Are you sure you wish to delete this organization?', :method => :delete) %>&nbsp;<%= link_to 'Delete this organization', organization_path(@organization), :confirm => 'Are you sure you wish to delete this organization?', :method => :delete %>
+		</p>
+	<% end %>
+<p>Back to <%= link_to 'list of all organizations', organizations_path %></p>

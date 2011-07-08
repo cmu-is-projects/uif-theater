@@ -1,0 +1,15 @@
+
+
+<p>
+  <b>Item:</b>
+  <%= @photo.item_id %>
+</p>
+
+<p>
+  <b>Photo path:</b>
+  <%= @photo.photo_path %>
+</p>
+
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>

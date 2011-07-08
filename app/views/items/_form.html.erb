@@ -1,0 +1,112 @@
+<%= nested_form_for @item, :html => { :multipart => true } do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr>
+		<!-- Left column -->
+		<td width="440" valign="top">
+			<%= image_tag "forms/items_basic.png" %>
+			<div class="field">
+		    <%= f.label :name, "Name of item" %><br />
+		    <%= f.text_field :name, :size => 46 %>
+		  </div>
+			<div class="field">  
+		    <%= f.label :color_tokens, "Add color(s)" %><br /> 
+		    <%= f.text_field :color_tokens, "data-pre" => @item.colors.map(&:attributes).to_json %>      
+			</div>
+		  <div class="field">
+		    <%= f.label :keywords, "Keywords" %><br />
+		    <%= f.text_field :keywords, :size => 46 %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :description, "Description of item" %><br />
+		    <%= f.text_area :description, :rows => 4 %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :size, "Size / dimensions" %><br />
+		    <%= f.text_field :size, :size => 20 %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :quantity %><br />
+		    <%= f.text_field :quantity, :size => 20 %>
+		  </div>
+		
+			<p class="supertiny">&nbsp;</p>
+			<%= image_tag "forms/items_finding_it.png" %>
+			<div class="field">
+		    <%= f.label :status, "Status at UIF" %><br />
+		    <%= f.select :status, Item::ITEM_STATUS, :prompt => "Select ..." %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :location_id, "Warehouse location" %><br />
+				<%# f.text_field :location_id %>
+		    <%= f.collection_select :location_id, Location.all, :id, :name, :prompt => "Select ..." %>
+		  </div>
+
+		</td>
+		
+		<!-- Spacer column -->
+		<td width="20">&nbsp;</td>
+		
+		<!-- Right column -->
+		<td width="440" valign="top">
+			<%= image_tag "forms/items_options.png" %>
+			
+			<!-- Photos first -->
+			<% if @this_action == "edit" %>
+				<div class="field">
+				<label>Manage photos</label>
+				<% for photo in @item.photos %>
+					<p>
+						<%= image_tag photo.image_url(:thumb) %> 
+						<%= link_to(image_tag("icons/close.gif", :border => 0), remove_photo_path(photo.id), :confirm => 'Are you sure you wish to delete this photo?', :method => :delete) %>
+					</p>
+				<% end %>
+				</div>
+			<% end %>
+
+			<div id="item_photos" class="field">
+				<% if @this_action == "add" %>
+					<label>Add photo(s)</label>
+					<%= f.fields_for :photos do |photo_form| %>
+						<%= render "photo_fields", :f => photo_form %>
+					<% end %> <!-- end of one photo form -->
+				<% end %>
+				<%= f.link_to_add "Add Another Photo", :photos %>
+			</div>
+			<p class="supertiny">&nbsp;</p>
+			
+			<!-- Categories -->
+			<div class="field">  
+		    <%= f.label :category_tokens, "Choose categories" %><br /> 
+		    <%= f.text_field :category_tokens, "data-pre" => @item.categories.map(&:attributes).to_json %>      
+				<p class="supertiny">&nbsp;</p>
+			</div>
+			<!-- Genders -->
+			<div class="field">
+		    <label>Choose gender(s)</label>
+		    <%= render :partial => "gender_checkboxes" %>
+		  </div>
+		
+			<p>&nbsp;</p>
+			<p class="supertiny">&nbsp;</p>
+		  <div class="actions">
+		    <%= f.submit %>
+		  </div>
+			
+			
+		</td>
+	</tr>
+</table>
+
+<% end %>

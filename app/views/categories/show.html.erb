@@ -1,0 +1,24 @@
+
+<p>
+  <b>Name:</b>
+  <%= @category.name %>
+</p>
+
+<p>
+  <b>Subcategory of:</b>
+  <%= @category.subcategory_of %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @category.active %>
+</p>
+
+
+<% unless current_user.is_partner? %>
+	<p><%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_category_path(@category))  %>&nbsp;<%= link_to 'Edit this category', edit_category_path(@category) %> &nbsp;|&nbsp;
+		<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), category_path(@category), :confirm => 'Are you sure you wish to delete this category?', :method => :delete) %>&nbsp;<%= link_to 'Delete this category', category_path(@category), :confirm => 'Are you sure you wish to delete this category?', :method => :delete %>
+	</p>
+<% end %>
+<p>Back to <%= link_to 'list of all categories', categories_path %></p>
+

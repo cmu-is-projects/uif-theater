@@ -1,0 +1,30 @@
+<% unless current_user.is_partner? %>
+	<div id="add_widget"><%= link_to '+ Add a New Color', new_color_path %></div>
+<% end %>
+
+<h1>Listing colors</h1>
+
+<table class="datagrid">
+  <thead class="datagrid">
+		<th width="200">&nbsp;Color</th>
+		<% unless current_user.is_partner? %>
+			<th>&nbsp;</th>
+		<% end %>
+  </thead>
+
+<% @colors.each do |color| %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td><%= color.name %></td>
+		<% unless current_user.is_partner? %>
+			<td align="center">
+				<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_color_path(color))  %>&nbsp;
+				<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), color_path(color), :confirm => 'Are you sure you wish to delete this color?', :method => :delete) %>
+	  	</td>
+		<% end %>
+  </tr>
+<% end %>
+</table>
+
+<p class="supertiny">&nbsp;</p>
+<%# paginate @colors %>
+<p class="supertiny">&nbsp;</p>

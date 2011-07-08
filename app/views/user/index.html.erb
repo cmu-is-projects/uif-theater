@@ -1,0 +1,35 @@
+<% unless current_user.is_partner? %>
+	<div id="add_widget"><%= link_to '+ Add a New User', new_user_path %></div>
+<% end %>
+
+<h1>Current users</h1>
+<table class="datagrid">
+  <thead class="datagrid">
+		<th width="54" align="left">&nbsp;</th>
+    <th width="175" align="left">&nbsp;&nbsp;Name</th>
+		<th width="200">&nbsp;Email</th>
+		<th width="100" align="center">&nbsp;Phone</th>
+		<% unless current_user.is_partner? %>
+			<th>&nbsp;</th>
+		<% end %>
+  </thead>
+
+	<% for user in @users %>  
+	  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">  
+	    <td valign="center">&nbsp;<%= image_tag avatar_url(user) %></td>
+	  	<td>&nbsp;<%= link_to user.name, user_path(user) %></td>  
+	    <td>&nbsp;<%= user.email %></td>
+			<td align="center">&nbsp;<%= number_to_phone user.phone %></td>  
+			<% unless current_user.is_partner? %>
+	    	<td align="center">
+					<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_user_path(user)) %>&nbsp;
+		    	<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), user_path(user), :confirm => 'Are you sure you wish to deactivate this user?', :method => :delete) %>
+				</td>  
+			<% end %>
+	  </tr>  
+	<% end %>
+</table>
+<p class="supertiny">&nbsp;</p>
+<%= paginate @users %>
+<p class="supertiny">&nbsp;</p>
+

@@ -1,0 +1,36 @@
+<% unless current_user.is_partner? %>
+	<div id="add_widget"><%= link_to '+ Add a New Location', new_location_path %></div>
+<% end %>
+
+<h1>Listing warehouse locations</h1>
+
+<table class="datagrid">
+  <thead class="datagrid">
+		<th width="64">&nbsp;</th>
+		<th width="100">&nbsp;Storage Type</th>
+		<th width="100">&nbsp;Storage Unit</th>
+		<th width="100">&nbsp;Container</th>
+		<% unless current_user.is_partner? %>
+			<th>&nbsp;</th>
+		<% end %>
+  </thead>
+
+<% @locations.each do |location| %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+		<td><%= location.name %></td>
+    <td><%= location.storage_type %></td>
+    <td><%= location.storage_unit %></td>
+    <td><%= location.container %></td>
+		<% unless current_user.is_partner? %>
+			<td align="center">
+				<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_location_path(location))  %>&nbsp;
+				<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), location_path(location), :confirm => 'Are you sure you wish to delete this location?', :method => :delete) %>
+		 	</td>
+		<% end %>
+  </tr>
+<% end %>
+</table>
+
+<p class="supertiny">&nbsp;</p>
+<%= paginate @locations %>
+<p class="supertiny">&nbsp;</p>

@@ -1,0 +1,7 @@
+<h1>Editing <%= @location.name %></h1>
+
+<%= render 'form' %>
+
+Back to <%= link_to "#{@location.name} details", @location %> <br />
+Back to <%= link_to 'list of all locations', locations_path %>
+

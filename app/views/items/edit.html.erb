@@ -1,0 +1,6 @@
+<h1>Editing <%= @item.name %></h1>
+<% @this_action = 'edit' %>
+<%= render 'form' %>
+
+Back to <%= link_to "#{@item.name} details", @item %> <br />
+Back to <%= link_to 'list of all items', items_path %>

@@ -1,0 +1,16 @@
+<div id="notes">
+<% for note in @notes %>
+  <div class="note">
+		<div class="note_body">
+			<%= note.content %><br />
+			<span class="note_info">
+				<%= image_tag tiny_avatar_url(note.user) %>
+				Posted by <%= note.user.name %> on <%= note.created_at.strftime('%B %d, %Y') %>
+			</span>
+		</div>
+		<div class="note_controls">
+			<%= link_to(image_tag("/images/icons/close.gif", :border => 0), delete_note_path(note), :method => :delete, :confirm => 'Delete this note?') %>
+		</div>
+  </div>
+<% end %>
+</div>

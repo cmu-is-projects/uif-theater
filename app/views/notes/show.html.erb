@@ -1,0 +1,25 @@
+
+
+<p>
+  <b>User:</b>
+  <%= @note.user_id %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @note.content %>
+</p>
+
+<p>
+  <b>Notable:</b>
+  <%= @note.notable_id %>
+</p>
+
+<p>
+  <b>Notable type:</b>
+  <%= @note.notable_type %>
+</p>
+
+
+<%= link_to 'Edit this note', edit_note_path(@note) %> |
+Back to <%= link_to 'list of all notes', notes_path %>

@@ -1,0 +1,35 @@
+<% unless current_user.is_partner? %>
+	<div id="add_widget"><%= link_to '+ Add a New Organization', new_organization_path %></div>
+<% end %>
+
+<h1>Listing all organizations</h1>
+
+<table class="datagrid">
+  <thead class="datagrid">
+    <th width="250" align="left">&nbsp;&nbsp;Name</th>
+		<th width="200">&nbsp;Address</th>
+		<th width="100">&nbsp;Phone</th>
+		<% unless current_user.is_partner? %>
+			<th>&nbsp;</th>
+		<% end %>
+  </thead>
+  
+<% for organization in @organizations %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td align="left">&nbsp;<%= link_to organization.name, organization_path(organization) %></td>
+		<td align="left">&nbsp;<%= organization.street %>, <%= organization.zip %></td>
+		<td align="center">&nbsp;<%= number_to_phone organization.phone %></td>
+		<% unless current_user.is_partner? %>
+			<td align="center">
+				<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_organization_path(organization))  %>&nbsp;
+				<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), organization_path(organization), :confirm => 'Are you sure you wish to deactivate this organization?', :method => :delete) %>
+		 	</td>
+		<% end %>
+  </tr>
+<% end %>
+</table>
+<p class="supertiny">&nbsp;</p>
+<%= paginate @organizations %>
+<p class="supertiny">&nbsp;</p>
+
+

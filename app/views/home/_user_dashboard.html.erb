@@ -1,0 +1,36 @@
+<p>Welcome <%= current_user.name %> to your dashboard...</p>
+<p class="supertiny">&nbsp;</p>
+
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr>
+		<td valign="top" width="550" class="show">
+			<%= render :partial => "pending_users" %>
+		</td>
+		
+		<!-- Spacer column -->
+		<td width="40">&nbsp;</td>
+		
+		<td class="my_list" valign="top" width="300">
+			<strong>Quick Links</strong><br /><br />
+			<% unless current_user.is_partner? %>
+				<p><%= link_to "Add New Item", new_item_path %></p>
+			<% end %>
+			<p><%= link_to "Browse Items", items_path %></p>
+			<% if current_user.is_admin? %>
+				<p><%= link_to "Add New User", new_user_path %></p>
+				<p><%= link_to "Manage Organizations", organizations_path %></p>
+			<% end %>
+			<% if current_user.is_coordinator? %>
+				<p><%= link_to "View All Users", user_index_path %></p>
+				<p><%= link_to "View Organizations", organizations_path %></p>
+			<% end %>
+			<% unless current_user.is_partner? %>
+				<p><%= link_to "Manage Warehouse Locations", locations_path %></p>
+				<p><%= link_to "Manage Categories", categories_path %></p>
+				<p><%= link_to "Manage Colors", colors_path %></p>
+			<% end %>
+		</td>
+	</tr>
+</table>
+
+<p class="supertiny">&nbsp;</p>

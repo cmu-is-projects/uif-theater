@@ -1,0 +1,32 @@
+<% unless current_user.is_partner? %>
+	<div id="add_widget"><%= link_to '+ Add a New Category', new_category_path %></div>
+<% end %>
+
+<h1>Listing categories</h1>
+
+<table class="datagrid">
+  <thead class="datagrid">
+		<th width="200">&nbsp;Category Name</th>
+		<th width="200">&nbsp;Subcategory Of</th>
+		<% unless current_user.is_partner? %>
+			<th>&nbsp;</th>
+		<% end %>
+  </thead>
+
+<% @categories.each do |category| %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td><%= category.name %></td>
+    <td><%= category.parent_category %></td>
+		<% unless current_user.is_partner? %>
+			<td align="center">
+				<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_category_path(category))  %>&nbsp;
+				<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), category_path(category), :confirm => 'Are you sure you wish to delete this category?', :method => :delete) %>
+	  	</td> 
+		<% end %>
+	</tr>
+<% end %>
+</table>
+
+<p class="supertiny">&nbsp;</p>
+<%# paginate @categories %>
+<p class="supertiny">&nbsp;</p>

@@ -1,0 +1,84 @@
+<%# stylesheet_link_tag 'userbox' if params[:action] == 'userbox' %>
+
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr>
+		<!-- Left column -->
+		<table border="0" cellspacing="5" cellpadding="5">
+    	<tr>
+    		<!-- Main column -->
+    		<td valign="top" width="250" class="show">
+    			<%= image_tag "forms/accinfo-section-mini.png" %>
+
+    			<p class="lgtext">
+    			<%= image_tag avatar_url(@user) %> 
+    			<%= @user.name %>
+    			</p>
+          <br></br>
+    			<p>
+    			  <b>Email:</b>
+    			  <%= @user.email %>
+    			</p>
+          <p>
+            <b>Phone:</b> 
+            <%= number_to_phone @user.phone %>
+          </p>
+	        <p>
+    			  <b>Organization</b>
+            <%= @user.organization.name %>
+    			</p>
+    			<p>
+    				<b>Role:</b> 
+    				<%= @user.role.to_s.capitalize %>
+    				</p>
+    			<p>
+    			  <b>Status:</b> 
+    			  <%= @user.current_status %>
+    			</p>
+
+    		</td>
+		
+		<!-- Spacer column -->
+		<td width="20">&nbsp;</td>
+		
+		<!-- Right column -->
+		<td width="250" valign="top" class="show">
+			<%= image_tag "forms/orderhis-section.png" %>
+			<p>
+			  <b>Recent orders</b>
+			</p>
+		<div>
+			<table cellspacing="0" cellpadding="3" border="0">
+        <tbody>
+			    <tr>
+			      <td width="100">
+              <p>Order Date</p>
+            </td>
+            <td width="150">
+              <p>Order Summary</p>
+            </td>
+         </tr
+       </tbody>
+      </table>
+      </div>
+		
+			<!-- Bottom left cell -->
+    	<tr>
+    		<td valign="top" class="show">
+					<% unless current_user.is_partner? %>				
+          	<% unless @notes.empty? || @notes.nil? %>
+							<strong>Notes:</strong><br />
+	          	<br>
+	          	<%= render :partial => "partials/notes_list" %>
+		          </p>
+						<% end %>
+	          <strong><%= link_to "Add a note", user_notes_path(@user) %></strong> <br />
+						<%= link_to 'Edit this user', edit_user_path(@user) %> <br />
+						Back to <%= link_to 'list of all users', user_list_path %>
+					<% end %>
+    		</td>
+    	</tr>
+		</td>
+	</tr>
+</table>
+
+

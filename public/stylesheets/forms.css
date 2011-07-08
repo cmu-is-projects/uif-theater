@@ -1,0 +1,47 @@
+/********** FORM ELEMENTS ********/
+
+.field {
+	padding: 5px 0px 5px 0px;
+}
+.field label {
+	font-weight: bold;
+	color:#7F7F7F;
+	font-size:95%;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+
+.gender_checkbox {
+	line-height: 1.5;
+}
+
+
+
+
+
+
+
+#item_submit {
+	background:#666; color:#fff; 
+	font-size: 150%;
+	cursor:pointer;
+	padding:5px 10px; 
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px
+}
+
+#add_button {
+	background:#0100EB; color:#fff; 
+	font-size: 120%;
+	cursor:pointer;
+	padding:5px 10px; 
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+#add_button a {
+	color:#fff !important; 
+	font-size: 120%;
+}
+
+
+

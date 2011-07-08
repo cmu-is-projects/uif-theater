@@ -1,0 +1,68 @@
+<% if @this_action = 'add' %>
+	<%= form_for(@user, :url => user_index_path) do |f| %>
+<% else %>
+	<%= form_for(@user, :url => update_user_path) do |f| %>
+<% end %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+
+	<div class="field">
+	  <%= f.label :email %><br />
+	  <%= f.email_field :email %>
+	</div>
+
+	<% if @this_action == "add" %>
+		<div class="field">
+		  <%= f.label :password %><br />
+		  <%= f.password_field :password %>
+		</div>
+	
+		<div class="field">
+		  <%= f.label :password_confirmation %><br />
+		  <%= f.password_field :password_confirmation %>
+		</div>
+	<% end %>
+	
+	<div class="field">
+		<%= f.label :phone %><br />
+	  <%= f.text_field :phone %>
+	</div>
+
+	<div class="field">
+		<%= f.label :organization_id %><br />
+	  <%= f.collection_select :organization_id, Organization.active.all, :id, :name, :prompt => "Select ..." %>
+	</div>
+
+	<div class="field">
+		<%= f.label :role %><br />
+	  <%= f.select :role, User::ROLES, :prompt => "Select ..." %>
+	</div>
+	
+	<div class="field">
+		<%= f.label :status %><br />
+	  <%= f.select :status, User::STATUS_LIST, :prompt => "Select ..." %>
+	</div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

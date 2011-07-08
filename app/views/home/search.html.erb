@@ -1,0 +1,49 @@
+<% if @query == "" || @query.nil? %>
+	<h3>Please enter a search term first.</h3>
+<% else %>
+	<h3>
+		Search result for term '<em><%= @query %>'</em> resulted in <%= @total_hits %> hits: 
+		<% unless @costumes.empty? %>
+			<%= pluralize(@costumes.size, 'costume')  %>
+		<% end %> 
+		<% unless @props.empty? %>
+			<%= ", " unless @costumes.empty? %>
+			<%= pluralize(@props.size, 'prop')  %>  
+		<% end %>
+		<% unless @staging.empty? %>
+			<%= ", " unless @costumes.empty? && @props.empty? %>
+			<%= pluralize(@staging.size, 'staging') %>
+		<% end %>
+	</h3>
+	<p class="supertiny">&nbsp;</p>
+
+	<div id="accordion">
+	
+		<% unless @costumes.empty? %>
+		<h6><%= link_to(image_tag("forms/search_costumes.png"),"#") %></h6>
+		<div class="browse_section">
+			<p class="search_count"><%= pluralize(@costumes.size, 'costume') %> matching term '<em><%= @query %>'</em></p>
+			<%= render :partial => "partials/display_items_table", :locals => {:items  => @costumes} %>
+		</div>
+		<% end %>
+	
+		<% unless @props.empty? %>
+		<h6><%= link_to(image_tag("forms/search_props.png"),"#") %></h6>
+	
+		<div class="browse_section">
+			<p class="search_count"><%= pluralize(@props.size, 'prop') %> matching term '<em><%= @query %>'</em></p>
+			<%= render :partial => "partials/display_items_table", :locals => {:items  => @props} %>
+		</div>
+		<% end %>
+	
+		<% unless @staging.empty? %>
+		<h6><%= link_to(image_tag("forms/search_staging.png"),"#") %></h6>
+		<div class="browse_section">
+			<p class="search_count"><%= pluralize(@staging.size, 'staging') %> matching term '<em><%= @query %>'</em></p>
+			<%= render :partial => "partials/display_items_table", :locals => {:items  => @staging} %>
+		</div>
+		<% end %>
+	
+	</div>
+<% end %>
+		<!-- <p><strong><%# @query %> :: <%# @name_query %></strong></p> -->

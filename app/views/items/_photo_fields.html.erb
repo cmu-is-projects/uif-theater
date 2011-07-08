@@ -1,0 +1,11 @@
+<div class="fields">
+	<div class="photo_box">
+		<div class="photo_fields">
+			Upload image: <%= f.file_field :image %> 
+			<%= f.hidden_field :image_cache %>
+		</div>
+		<div class="photo_controls">
+			<%= f.link_to_remove(image_tag("/images/icons/close.gif", :border => 0)) %>
+		</div>
+	</div>
+</div>

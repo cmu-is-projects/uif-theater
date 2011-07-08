@@ -1,0 +1,27 @@
+<p>
+  <b>Name:</b>
+  <%= @location.name %>
+</p>
+
+<p>
+  <b>Storage type:</b>
+  <%= @location.storage_type %>
+</p>
+
+<p>
+  <b>Storage unit:</b>
+  <%= @location.storage_unit %>
+</p>
+
+<p>
+  <b>Container:</b>
+  <%= @location.container %>
+</p>
+
+
+<% unless current_user.is_partner? %>
+	<p><%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_location_path(@location))  %>&nbsp;<%= link_to 'Edit this location', edit_location_path(@location) %> &nbsp;|&nbsp;
+		<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), location_path(@location), :confirm => 'Are you sure you wish to delete this location?', :method => :delete) %>&nbsp;<%= link_to 'Delete this location', location_path(@location), :confirm => 'Are you sure you wish to delete this location?', :method => :delete %>
+	</p>
+<% end %>
+Back to <%= link_to 'list of all locations', locations_path %>

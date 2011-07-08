@@ -1,0 +1,11 @@
+<p class="supertiny">&nbsp;</p>
+<h2>Add a new note</h2>
+
+<%= form_for [@notable, Note.new] do |f| %>
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+  <p>
+    <%= f.label :content %><br />
+    <%= f.text_area :content, :rows => 4 %>
+  </p>
+  <p><%= f.submit "Add note" %></p>
+<% end %>

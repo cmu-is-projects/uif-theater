@@ -1,0 +1,7 @@
+<p class="gender_checkbox">
+	<% for gender in Gender.all  %>
+	   <%= check_box_tag "item[gender_ids][]", gender.id, @item.genders.include?(gender) %>
+		 <%= gender.name %>
+	   <br />
+	<% end  %>
+</p>

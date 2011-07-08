@@ -1,0 +1,21 @@
+<p><strong>All partners at <%= @organization.name %></strong></p>
+<table class="datagrid">
+  <thead class="datagrid">
+    <th width="175" align="left">&nbsp;&nbsp;Name</th>
+		<th width="125">&nbsp;&nbsp;Phone</th>
+		<th width="75">Status</th>
+		<th>&nbsp;</th>
+  </thead>
+  
+<% for person in @members %>
+  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+    <td align="left">&nbsp;<%= link_to person.name, user_path(person) %></td>
+		<td align="left">&nbsp;<%= number_to_phone person.phone %></td>
+		<td align="left">&nbsp;<%= person.current_status %></td>
+		<td align="center">
+		<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_user_path(person))  %>&nbsp;
+  </td>
+  </tr>
+<% end %>
+</table>
+<p class="supertiny">&nbsp;</p>

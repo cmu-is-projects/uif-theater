@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  storage_type: MyString
+  storage_unit: MyString
+  container: 1
+
+two:
+  storage_type: MyString
+  storage_unit: MyString
+  container: 1

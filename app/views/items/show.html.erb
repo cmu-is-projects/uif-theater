@@ -1,0 +1,100 @@
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr>
+		<!-- Main column -->
+		<td valign="top" width="550" class="show" colspan="2">
+			<%= image_tag "forms/show_items_basic.png" %>
+		</td>
+			
+		<!-- Spacer column -->
+		<td width="40" rowspan="3">&nbsp;</td>
+		
+		<!-- List column -->
+		<td class="my_list" valign="top" width="300" rowspan="3">
+			<strong>My Current List</strong>
+		</td>
+	</tr>
+	
+	<!-- Continuing top left cell -->
+	<tr>
+		<td valign="top" width="200" class="show">
+			<% unless @photos.empty? || @photos.nil? %> 
+				<% if @photos.size == 1 %>
+					<%= image_tag @photos.first.image_url %>
+				<% else %>
+					<div id="item_slides" height="200">
+					<% @photos.each do |photo| %>
+						<%= image_tag photo.image_url %>
+					<% end %>
+					</div>
+				<% end %>
+			<% end %>
+		</td>
+		<td valign="top" class="show">
+			<p class="lgtext">
+			  <b><%= @item.name %></b>
+			</p>
+			
+			<p>
+			  <b>Keywords:</b>
+			  <%= @item.keywords %>
+			</p>
+			
+			<p>
+			  <b>Categories:</b>
+			  <%= @item.categories_list %>
+			</p>
+			
+			<p>
+			  <b>Description:</b>
+			  <%= @item.description %>
+			</p>
+			
+			<% unless @item.size.blank? %>
+				<p>
+				  <b>Size:</b>
+				  <%= @item.size %>
+				</p>
+			<% end %>
+
+			<p>
+			  <b>Quantity:</b>
+			  <%= @item.quantity %>
+			</p>
+		</td>
+	</tr>
+	
+	<!-- Bottom left cell -->
+	<tr>
+		<td valign="top" class="show" colspan="2">
+			<% unless current_user.is_partner? %>
+				<%= image_tag "forms/show_items_finding_it.png" %>
+				<p>
+				  <b>Status at UIF:</b>
+				  <%= @item.status %>
+				</p>
+				<p>
+				  <b>Warehouse location:</b>
+				  <%= @item.location.name %>
+				</p>
+			<% end %>
+			<% if @item.status == "available" %>
+				<p><%= button_to "Add to My List", add_list_item_path(@item), :id => "add_button" %></p>
+			<% end %>
+		</td>
+	</tr>
+</table>
+<p class="supertiny">&nbsp;</p>
+<p>
+	<strong>Notes:</strong><br />
+	<%= render :partial => "partials/notes_list" %>
+</p>
+
+<% unless current_user.is_partner? %>
+	<p><strong><%= link_to "Add a note", item_notes_path(@item) %></strong> </p>
+	<p><%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_item_path(@item))  %>&nbsp;<%= link_to 'Edit this item', edit_item_path(@item) %> &nbsp;|&nbsp;
+		<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), item_path(@item), :confirm => 'Are you sure you wish to delete this item?', :method => :delete) %>&nbsp;<%= link_to 'Delete this item', item_path(@item), :confirm => 'Are you sure you wish to delete this item?', :method => :delete %>
+	</p>
+<% end %>
+<p>Back to <%= link_to 'list of all items', items_path %></p>
+
+
