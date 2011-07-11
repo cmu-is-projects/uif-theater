@@ -45,7 +45,7 @@ class Item < ActiveRecord::Base
   end
 	
 	# Scopes
-	scope :alphabetical, order('name')
+	scope :alphabetical, order('items.name')
   scope :just_props, joins(:categories).select("DISTINCT ON (item_id) *").where("categories.id IN (#{Category.all_ids_associated_with("Props").join(",")})") #.group(:item_id)
   scope :just_costumes, joins(:categories).select("DISTINCT ON (item_id) *").where("categories.id IN (#{Category.all_ids_associated_with("Costumes").join(",")})") #.group(:item_id)
   scope :just_staging, joins(:categories).select("DISTINCT ON (item_id) *").where("categories.id IN (#{Category.all_ids_associated_with("Staging").join(",")})") #.group(:item_id)
