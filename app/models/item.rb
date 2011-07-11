@@ -49,12 +49,7 @@ class Item < ActiveRecord::Base
   scope :just_props, joins(:categories).where("categories.id IN (#{Category.all_ids_associated_with("Props").join(",")})") 
   scope :just_costumes, joins(:categories).where("categories.id IN (#{Category.all_ids_associated_with("Costumes").join(",")})") 
   scope :just_staging, joins(:categories).where("categories.id IN (#{Category.all_ids_associated_with("Staging").join(",")})") 
-    
-  
-  # scope :just_props, lambda ("subcategory_of IN (#{Category.all_ids_associated_with("Props").join(",")}) OR name = 'Props'")
-  # scope :just_costumes, where("subcategory_of IN (#{Category.all_ids_associated_with("Costumes").join(",")}) OR name = 'Costumes'")
-  # scope :just_staging, where("subcategory_of IN (#{Category.all_ids_associated_with("Staging").join(",")}) OR name = 'Staging'")
-    
+        
   scope :search_all_name, lambda { |q| where("\"items\".\"name\" ILIKE '%#{Item.build_all_query(q,'name')}%'") }
   scope :search_any_name, lambda { |q| where("\"items\".\"name\" ILIKE '%#{Item.build_any_query(q,'name')}%'") }
      
@@ -67,6 +62,13 @@ class Item < ActiveRecord::Base
   scope :search_any_categories, lambda { |q| joins(:categories).where("categories.name ILIKE '%#{Item.build_any_query(q,'name')}%'") }
   scope :search_any_keywords, lambda { |q| where("items.keywords ILIKE '%#{Item.build_any_query(q,'keywords')}%'") }
   scope :search_any_description, lambda { |q| where("items.description ILIKE '%#{Item.build_any_query(q,'description')}%'") }
+
+  def self.just_for(category)
+    final = Array.new
+    all_values = joins(:categories).where("categories.id IN (#{Category.all_ids_associated_with(category).join(",")})")
+    all_values.each{|i| final << i unless final.include? i}.compact!
+    final
+  end
 
 
   def self.search(query, category)
