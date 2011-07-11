@@ -12,11 +12,11 @@ table.datagrid {
 
 table.datagrid a {
 	text-decoration: none;
-	color: #000000;
+	color: #4d7bad;
 }
 table.datagrid a:hover {
 	text-decoration: underline;
-	color: #0033ff;
+	color: #092d54;
 }
 
 /*	=============================================== */
@@ -35,7 +35,7 @@ caption.datagrid {
 thead.datagrid th {
 	font-size: 105%;
 	color: #ffffff;
-	background-color: #000;;
+	background-color: #ffcc6d;;
 	/* background-color: #000000; */
 	height: 28px;
 	font-weight: bold;
@@ -85,24 +85,16 @@ td {
 	outline-width: 0;
 }
 .dg_list_line_odd:hover {
-	background-color: #B5CEFF;
-	color: #0033ff;
 	outline-width: 0;
 }
 .dg_list_line_odd:hover a {
-	background-color: #B5CEFF;
-	color: #0033ff;
 	text-decoration: underline;
 	outline-width: 0;
 }
 .dg_list_line_even:hover {
-	background-color: #B5CEFF;
-	color: #0033ff;
 	outline-width: 0;
 }
 .dg_list_line_even:hover a {
-	background-color: #B5CEFF;
-	color: #0033ff;
 	text-decoration: underline;
 	outline-width: 0;
 }
