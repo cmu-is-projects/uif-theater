@@ -66,8 +66,8 @@ class Item < ActiveRecord::Base
   def self.just_for(category)
     final = Array.new
     all_values = joins(:categories).where("categories.id IN (#{Category.all_ids_associated_with(category).join(",")})")
-    all_values.each{|i| final << i unless final.include? i}.compact!.sort_by{|i| i.name}
-    final
+    all_values.each{|i| final << i unless final.include? i}.compact!
+    final.sort_by{|i| i.name}
   end
 
 
