@@ -19,10 +19,13 @@ class HomeController < ApplicationController
   
   def search
     @query=params[:query]
-    @costumes = Item.search(@query, "costumes")
-    @props = Item.search(@query, "props")
-    @staging = Item.search(@query, "staging")
-    @total_hits = @costumes.size + @props.size + @staging.size
+    @c = Item.search(@query, "costumes")
+    @p = Item.search(@query, "costumes")
+    @s = Item.search(@query, "costumes")
+    @costumes = Kaminari.paginate_array(@c).page(params[:page]).per(21)
+    @props = Kaminari.paginate_array(@p).page(params[:page]).per(21)
+    @staging = Kaminari.paginate_array(@s).page(params[:page]).per(21)
+    @total_hits = @c.size + @p.size + @s.size
   end
 
 end
