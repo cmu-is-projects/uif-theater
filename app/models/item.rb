@@ -46,9 +46,9 @@ class Item < ActiveRecord::Base
 	
 	# Scopes
 	scope :alphabetical, order('items.name')
-  scope :just_props, joins(:categories).select("DISTINCT ON (item_id) *").where("categories.id IN (#{Category.all_ids_associated_with("Props").join(",")})") #.group(:item_id)
-  scope :just_costumes, joins(:categories).select("DISTINCT ON (item_id) *").where("categories.id IN (#{Category.all_ids_associated_with("Costumes").join(",")})") #.group(:item_id)
-  scope :just_staging, joins(:categories).select("DISTINCT ON (item_id) *").where("categories.id IN (#{Category.all_ids_associated_with("Staging").join(",")})") #.group(:item_id)
+  scope :just_props, joins(:categories).where("categories.id IN (#{Category.all_ids_associated_with("Props").join(",")})") #.group(:item_id)
+  scope :just_costumes, joins(:categories).where("categories.id IN (#{Category.all_ids_associated_with("Costumes").join(",")})") #.group(:item_id)
+  scope :just_staging, joins(:categories).where("categories.id IN (#{Category.all_ids_associated_with("Staging").join(",")})") #.group(:item_id)
   
   scope :search_all_name, lambda { |q| where("\"items\".\"name\" ILIKE '%#{Item.build_all_query(q,'name')}%'") }
   scope :search_any_name, lambda { |q| where("\"items\".\"name\" ILIKE '%#{Item.build_any_query(q,'name')}%'") }

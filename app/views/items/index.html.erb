@@ -9,21 +9,21 @@
 	<div class="browse_section">
 		<%= render :partial => "partials/display_items_table", :locals => {:items  => @costumes} %>
 		<!-- <p class="supertiny">&nbsp;</p> -->
-		<%= paginate @costumes %>
+		<%# paginate @costumes %>
 	</div>
 	
 	<h6><%= link_to(image_tag("forms/search_props.png"),"#") %></h6>
 	<div class="browse_section">
 		<%= render :partial => "partials/display_items_table", :locals => {:items  => @props} %>
 		<!-- <p class="supertiny">&nbsp;</p> -->
-		<%= paginate @props %>
+		<%# paginate @props %>
 	</div>
 	
 	<h6><%= link_to(image_tag("forms/search_staging.png"),"#") %></h6>
 	<div class="browse_section">
 		<%= render :partial => "partials/display_items_table", :locals => {:items  => @staging} %>
 		<!-- <p class="supertiny">&nbsp;</p> -->
-		<%= paginate @staging %>
+		<%# paginate @staging %>
 	</div>
 	
 </div>
