@@ -18,9 +18,9 @@ class HomeController < ApplicationController
   
   def search
     @query=params[:query]
-    @costumes = Item.search(@query, "costumes").page(params[:page]).per(21)
-    @props = Item.search(@query, "props").page(params[:page]).per(21)
-    @staging = Item.search(@query, "staging").page(params[:page]).per(21)
+    @costumes = Item.search(@query, "costumes") #.page(params[:page]).per(21)
+    @props = Item.search(@query, "props") #.page(params[:page]).per(21)
+    @staging = Item.search(@query, "staging") #.page(params[:page]).per(21)
     @total_hits = @costumes.size + @props.size + @staging.size
   end
 

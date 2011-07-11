@@ -25,7 +25,7 @@
 			<p class="search_count"><%= pluralize(@costumes.size, 'costume') %> matching term '<em><%= @query %>'</em></p>
 			<%= render :partial => "partials/display_items_table", :locals => {:items  => @costumes} %>
 			<!-- <p class="supertiny">&nbsp;</p> -->
-			<%= paginate @costumes %>
+			<%# paginate @costumes %>
 		</div>
 		<% end %>
 	
@@ -36,7 +36,7 @@
 			<p class="search_count"><%= pluralize(@props.size, 'prop') %> matching term '<em><%= @query %>'</em></p>
 			<%= render :partial => "partials/display_items_table", :locals => {:items  => @props} %>
 			<!-- <p class="supertiny">&nbsp;</p> -->
-			<%= paginate @props %>
+			<%# paginate @props %>
 		</div>
 		<% end %>
 	
@@ -46,7 +46,7 @@
 			<p class="search_count"><%= pluralize(@staging.size, 'staging') %> matching term '<em><%= @query %>'</em></p>
 			<%= render :partial => "partials/display_items_table", :locals => {:items  => @staging} %>
 			<!-- <p class="supertiny">&nbsp;</p> -->
-			<%= paginate @staging %>
+			<%# paginate @staging %>
 		</div>
 		<% end %>
 	
