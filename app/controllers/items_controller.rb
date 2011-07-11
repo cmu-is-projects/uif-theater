@@ -5,9 +5,9 @@ class ItemsController < ApplicationController
 
   def index
     # @items = Item.all
-    @p = Item.just_for("Props").alphabetical.page(params[:page]).per(21)
-    @c = Item.just_for("Costumes").alphabetical.page(params[:page]).per(21)
-    @s = Item.just_for("Staging").alphabetical.page(params[:page]).per(21)
+    @p = Item.just_for("Props")
+    @c = Item.just_for("Costumes")
+    @s = Item.just_for("Staging")
     
     @props = Kaminari.paginate_array(@p).page(params[:page]).per(21)
     @costumes = Kaminari.paginate_array(@c).page(params[:page]).per(21)
