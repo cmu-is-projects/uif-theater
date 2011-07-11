@@ -49,6 +49,7 @@ class Item < ActiveRecord::Base
   scope :just_props, joins(:categories).where("categories.id IN (#{Category.all_ids_associated_with("Props").join(",")})") 
   scope :just_costumes, joins(:categories).where("categories.id IN (#{Category.all_ids_associated_with("Costumes").join(",")})") 
   scope :just_staging, joins(:categories).where("categories.id IN (#{Category.all_ids_associated_with("Staging").join(",")})") 
+    
   
   # scope :just_props, lambda ("subcategory_of IN (#{Category.all_ids_associated_with("Props").join(",")}) OR name = 'Props'")
   # scope :just_costumes, where("subcategory_of IN (#{Category.all_ids_associated_with("Costumes").join(",")}) OR name = 'Costumes'")
