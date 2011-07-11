@@ -67,8 +67,6 @@ class Item < ActiveRecord::Base
   scope :search_any_keywords, lambda { |q| where("items.keywords ILIKE '%#{Item.build_any_query(q,'keywords')}%'") }
   scope :search_any_description, lambda { |q| where("items.description ILIKE '%#{Item.build_any_query(q,'description')}%'") }
 
-  scope :name, where('.field = ?', 'value')
-
 
   def self.search(query, category)
     results = Array.new
