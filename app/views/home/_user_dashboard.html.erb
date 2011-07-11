@@ -9,38 +9,36 @@
 
 <table border="0" cellspacing="5" cellpadding="5">
 	<tr>
-			<td class="my_list" valign="top" width="300">
-				<strong>Quick Links</strong><br /><br />
-				<% unless current_user.is_partner? %>
-				<%= link_to items_path do %>
-					<p><img src="/images/icons/Magnifying_Glass.gif"> Browse Items</p>
-				<% end %>
-				<% if current_user.is_admin? %>	
-				<%= link_to new_item_path do %>
-					<p><img src="/images/icons/add.gif"> Add New Item</p>
-				<% end %>
-				<% end %>
-				<%link_to new_user_path do%>
-					<p><img src="/images/icons/	add_user32x32.png"> Add New User</p>
-				<% end %>
-					<p><%= link_to(image_tag("/images/icons/handshake_icon.gif", :border => 0), items_path)  %> <%= link_to "Manage Organizations", organizations_path %></p>
-				<% end %>
-				<% if current_user.is_coordinator? %>
-					<p><%= link_to(image_tag("/images/icons/user.gif", :border => 0), items_path)  %> <%= link_to "View All Users", user_index_path %></p>
-					<p><%= link_to(image_tag("/images/icons/organization.gif", :border => 0), organizations_path)  %> <%= link_to "View Organizations", organizations_path %></p>
-				<% end %>
-				<% unless current_user.is_partner? %>				
-					<p><%= link_to(image_tag("/images/icons/inventory_categories.png", :border => 0), items_path)  %> <%= link_to "Manage Categories", categories_path %></p>
-					<p><%= link_to(image_tag("/images/icons/paint_palette.gif", :border => 0), items_path)  %> <%= link_to "Manage Colors", colors_path %></p>
-					<p><%= link_to(image_tag("/images/icons/Open-Folder-Full-icon.png", :border => 0), items_path)  %> <%= link_to "Manage Warehouse Locations", locations_path %></p>
-				<% end %>
-				
-			
+		<td class="my_list" valign="top" width="300">
+			<strong>Quick Links</strong><br /><br />
+			<% unless current_user.is_partner? %>
+			<%= link_to items_path do %>
+				<p><img src="/images/icons/Magnifying_Glass.gif"> Browse Items</p>
+			<% end %>
+			<% if current_user.is_admin? %>	
+			<%= link_to new_item_path do %>
+				<p><img src="/images/icons/add.gif"> Add New Item</p>
+			<% end %>
+			<% end %>
+			<%link_to new_user_path do%>
+				<p><img src="/images/icons/	add_user32x32.png"> Add New User</p>
+			<% end %>
+				<p><%= link_to(image_tag("/images/icons/handshake_icon.gif", :border => 0), items_path)  %> <%= link_to "Manage Organizations", organizations_path %></p>
+			<% end %>
+			<% if current_user.is_coordinator? %>
+				<p><%= link_to(image_tag("/images/icons/user.gif", :border => 0), items_path)  %> <%= link_to "View All Users", user_index_path %></p>
+				<p><%= link_to(image_tag("/images/icons/organization.gif", :border => 0), organizations_path)  %> <%= link_to "View Organizations", organizations_path %></p>
+			<% end %>
+			<% unless current_user.is_partner? %>				
+				<p><%= link_to(image_tag("/images/icons/inventory_categories.png", :border => 0), items_path)  %> <%= link_to "Manage Categories", categories_path %></p>
+				<p><%= link_to(image_tag("/images/icons/paint_palette.gif", :border => 0), items_path)  %> <%= link_to "Manage Colors", colors_path %></p>
+				<p><%= link_to(image_tag("/images/icons/Open-Folder-Full-icon.png", :border => 0), items_path)  %> <%= link_to "Manage Warehouse Locations", locations_path %></p>
+			<% end %>
 		</td>
 		
 		<!-- Spacer column -->
 		<td width="40">&nbsp;</td>
-		
+		<td>
 
 		</td>
 	</tr>
