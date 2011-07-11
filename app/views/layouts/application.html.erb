@@ -7,6 +7,13 @@
   <%= stylesheet_link_tag "forms", "uif_styles", "token-input-facebook", "datagrid" %>
   <%= javascript_include_tag "jquery.min", "jquery-ui.min", "jquery_ujs", "application", "nested_form", "jquery.tokeninput", "jquery.cycle.lite" %>
   <%= csrf_meta_tag %>
+	<script type="text/javascript">
+	  (function() {
+	    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+	    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/3VKggH4iwygWVO4V6MO5AA.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+	  })();
+	</script>
 </head>
 <body>
 
