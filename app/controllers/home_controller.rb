@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def home
     if user_signed_in?
+		  redirect_to items_path if current_user.is_partner?
       @pending_users = User.pending.alphabetical.all
     else
       @user = User.new
@@ -18,9 +19,9 @@ class HomeController < ApplicationController
   
   def search
     @query=params[:query]
-    @costumes = Item.search(@query, "costumes") #.page(params[:page]).per(21)
-    @props = Item.search(@query, "props") #.page(params[:page]).per(21)
-    @staging = Item.search(@query, "staging") #.page(params[:page]).per(21)
+    @costumes = Item.search(@query, "costumes")
+    @props = Item.search(@query, "props")
+    @staging = Item.search(@query, "staging")
     @total_hits = @costumes.size + @props.size + @staging.size
   end
 

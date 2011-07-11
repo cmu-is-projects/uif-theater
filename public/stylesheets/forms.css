@@ -21,8 +21,8 @@
 
 
 #item_submit {
-	background:#666; color:#fff; 
-	font-size: 150%;
+	background:#4d7bad; color:#fff; 
+	font-size: 120%;
 	cursor:pointer;
 	padding:5px 10px; 
 	-moz-border-radius: 5px;
@@ -30,7 +30,7 @@
 }
 
 #add_button {
-	background:#0100EB; color:#fff; 
+	background:#4d7bad; color:#fff; 
 	font-size: 120%;
 	cursor:pointer;
 	padding:5px 10px; 

@@ -2,16 +2,16 @@
 	<ul>
 		<% if current_user.role == 'admin' %>
 		
-			<li><%= link_to "Home", home_path %> </li>
-			<li><%= link_to "Manage Account", user_index_path %></li>
+			<li><%= link_to "Dashboard", home_path %> </li>
+			<li><%= link_to "Manage Accounts", user_index_path %></li>
 			<li><%= link_to "Manage Inventory", items_path %> </li>
-			<li><%= link_to "Manage Request", contact_path %> </li>
+			<li><%= link_to "Manage Requests", contact_path %> </li>
 	
-		<% elsif current_user.role == 'Coordinator' %>
+		<% elsif current_user.role == 'coordinator' %>
 		
-			<li><%= link_to "Home", home_path %> </li>
+			<li><%= link_to "Dashboard", home_path %> </li>
 			<li><%= link_to "Manage Inventory", items_path %> </li>
-			<li><%= link_to "Manage Request", contact_path %> </li>
+			<li><%= link_to "Manage Requests", contact_path %> </li>
 	
 		<% else %>
 		
@@ -21,16 +21,12 @@
 	
 		<% end %>
 	
-		<% if current_user %>
-			<li><%= link_to "Logout", destroy_user_session_path %> </li>
-		<% else %>
-			<li><%= link_to "Login", new_user_session_path %> </li>
-		<% end %>
 	</ul>
 
 	<div id="search">
 		<%= form_tag('/home/search') do %>
-	  	<%= text_field_tag 'query' %> <%= submit_tag 'Search' %>
+	  	<%= text_field_tag 'query' %>
+	  	<%= submit_tag 'Search' %>
 		<% end %>
 	</div>
 

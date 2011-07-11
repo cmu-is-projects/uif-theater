@@ -27,8 +27,16 @@
 								<%= link_to(image_tag('layout/logo.png'), home_path) %>
 							</div>
 						</td>
-						<td>
 						
+						<td>
+							<div id="welcome">
+								<% if user_signed_in? %>
+									Welcome, <%= current_user.first_name %>!<br />
+									<a href="/profile">Account Settings</a> | 
+									<%= link_to "Logout", destroy_user_session_path %>
+								<% end %>
+							</div><!-- End of welcome div -->
+									
 							<div id="headerimg">
 								<%= image_tag('layout/headerbg6.png') %>
 							</div>

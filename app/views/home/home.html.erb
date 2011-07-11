@@ -1,5 +1,8 @@
 <% if user_signed_in? %>
-	<%= render :partial => "user_dashboard" %>
+	<% if current_user.is_partner? %>
+	<% else %>
+		<%= render :partial => "user_dashboard" %>
+	<% end %>
 <% else %>
 	<%= render :partial => "welcome" %>
 <% end %>
