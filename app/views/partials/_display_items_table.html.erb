@@ -8,7 +8,7 @@
 				<% unless items[(r*num_per_rows)+c].nil? %>
 					<td align="center" width="90" valign="top">
 						<% if items[(r*num_per_rows)+c].photos.empty? || items[(r*num_per_rows)+c].photos.nil? %>
-							<%= link_to(image_tag('missingimage.jgp'), item_path(items[(r*num_per_rows)+c])) %>
+							<%= link_to(image_tag('missingimage.jpg'), item_path(items[(r*num_per_rows)+c])) %>
 						<% else %>
 							<%= link_to(image_tag(items[(r*num_per_rows)+c].photos.first.image_url(:thumb)), item_path(items[(r*num_per_rows)+c])) %> <br />
 						<% end %>
