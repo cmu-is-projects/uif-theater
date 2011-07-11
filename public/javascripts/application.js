@@ -4,7 +4,7 @@
 // jQuery plugins code
 	$(function() {
 		$(".datepicker").datepicker();
-		$( "#accordion" ).accordion({ autoHeight: false });
+		$( "#accordion" ).accordion({ autoHeight: false, active: false, collapsible: true });
 		$('#item_slides').cycle();
 		
 	});
