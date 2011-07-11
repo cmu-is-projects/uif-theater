@@ -5,9 +5,9 @@ class ItemsController < ApplicationController
 
   def index
     # @items = Item.all
-    @props = Item.just_props.alphabetical.page(params[:page]).per(21)
-    @costumes = Item.just_costumes.alphabetical.page(params[:page]).per(21)
-    @staging = Item.just_staging.alphabetical.page(params[:page]).per(21)
+    @props = Item.just_props.page(params[:page]).per(21)
+    @costumes = Item.just_costumes.page(params[:page]).per(21)
+    @staging = Item.just_staging.page(params[:page]).per(21)
   end
 
 
