@@ -38,6 +38,22 @@ class Category < ActiveRecord::Base
     sub_ids
   end
   
+  def self.all_names_associated_with(parent_category)
+    sub_ids = Hash.new
+    p_cat = Category.find_by_name(parent_category)
+    unless p_cat.nil?
+      sub_ids[p_cat.id] = p_cat.name
+      subcats = p_cat.subcategories.map{|s| s}
+      unless subcats.empty? || subcats.nil?
+        subcats.each do |s_cat|
+          sub_ids[s_cat.id] = s_cat.name
+          # s_cat.subcategories.each{|sc| sub_ids[sc.id] = sc.name}
+        end
+      end
+    end
+    sub_ids
+  end
+  
   def all_ids_associated_with
     sub_ids = Array.new
     sub_ids << self.id

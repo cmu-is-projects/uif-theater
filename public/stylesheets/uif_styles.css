@@ -377,6 +377,24 @@ background: none;
 	height: 30px;
 }
 
+
+/********** SUBCATEGORIES LIST ********/
+
+.browse_section a {
+	color: #ffa800;
+}
+
+
+/********** DISPLAY RESULTS ********/
+.browse_section {
+	position:relative;
+}
+
+/********** DISPLAY RESULTS ********/
+.display_results {
+	position:relative;
+}
+
 /********** SEARCH BOX ********/
 #search {
 	margin-left:700px;

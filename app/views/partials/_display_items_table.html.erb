@@ -1,6 +1,6 @@
-<% num_per_rows = 7 %>
+<% num_per_rows = @num_per_row %>
 <% rows = calculate_rows(items.size, num_per_rows) %>
-<!-- <p><%# items.size %></p> -->
+
 <table border="0" cellspacing="10" cellpadding="10">
 	<% (0..rows).each do |r| %>
 		<tr>
@@ -13,7 +13,6 @@
 							<%= link_to(image_tag(items[(r*num_per_rows)+c].photos.first.image_url(:thumb)), item_path(items[(r*num_per_rows)+c])) %> <br />
 						<% end %>
 						<%= link_to(items[(r*num_per_rows)+c].name, item_path(items[(r*num_per_rows)+c])) %>
-						<!-- <p class="supertiny">&nbsp;</p> -->
 					</td>
 				<% end %>
 			<% end %>

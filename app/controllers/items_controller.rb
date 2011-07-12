@@ -3,15 +3,20 @@ class ItemsController < ApplicationController
   before_filter :authenticate_user!
   authorize_resource
 
-  def index
-    # @items = Item.all
-    @p = Item.just_for("Props")
-    @c = Item.just_for("Costumes")
-    @s = Item.just_for("Staging")
+  def index   
+    @p = (params[:id].nil? ? "Props" : "#{Category.find(params[:id]).name}")
+    @c = (params[:id].nil? ? "Costumes" : "#{Category.find(params[:id]).name}")
+    @s = (params[:id].nil? ? "Staging" : "#{Category.find(params[:id]).name}")
     
-    @props = Kaminari.paginate_array(@p).page(params[:page]).per(21)
-    @costumes = Kaminari.paginate_array(@c).page(params[:page]).per(21)
-    @staging = Kaminari.paginate_array(@s).page(params[:page]).per(21)
+    @num_per_row = 4
+    
+    @subcat_costumes = Category.all_names_associated_with "Costumes"
+    @subcat_props = Category.all_names_associated_with "Props"
+    @subcat_staging = Category.all_names_associated_with "Staging"
+    
+    @props = Kaminari.paginate_array(Item.just_for(@p)).page(params[:page]).per(16)
+    @costumes = Kaminari.paginate_array(Item.just_for(@c)).page(params[:page]).per(16)
+    @staging = Kaminari.paginate_array(Item.just_for(@s)).page(params[:page]).per(16)
   end
 
 
@@ -65,5 +70,22 @@ class ItemsController < ApplicationController
   
   def add_list_item
     
+  end
+  
+  def browse_subcategories
+    # redirect_to(items_path, :id => params[:id])
+    @p = (params[:id].nil? ? "Props" : "#{Category.find(params[:id]).name}")
+    @c = (params[:id].nil? ? "Costumes" : "#{Category.find(params[:id]).name}")
+    @s = (params[:id].nil? ? "Staging" : "#{Category.find(params[:id]).name}")
+    
+    @num_per_row = 4
+    
+    @subcat_costumes = Category.all_names_associated_with "Costumes"
+    @subcat_props = Category.all_names_associated_with "Props"
+    @subcat_staging = Category.all_names_associated_with "Staging"
+    
+    @props = Kaminari.paginate_array(Item.just_for(@p)).page(params[:page]).per(16)
+    @costumes = Kaminari.paginate_array(Item.just_for(@c)).page(params[:page]).per(16)
+    @staging = Kaminari.paginate_array(Item.just_for(@s)).page(params[:page]).per(16)
   end
 end

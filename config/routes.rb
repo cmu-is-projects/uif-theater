@@ -30,6 +30,7 @@ Uifcostumes::Application.routes.draw do
   match 'addlistitem/:id' => 'items#add_list_item', :as => :add_list_item
   match 'deleteuser/:id' => 'user#destroy', :as => :destroy_user
   match 'updateuser/:id' => 'user#update', :as => :update_user
+  match 'browsesubcategories/:id' => 'items#browse_subcategories', :as => :browse_subcategories
 
   # Default route
   root :to => 'home#home'
