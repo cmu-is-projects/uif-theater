@@ -17,6 +17,11 @@ class ItemsController < ApplicationController
     @props = Kaminari.paginate_array(Item.just_for(@p)).page(params[:page]).per(16)
     @costumes = Kaminari.paginate_array(Item.just_for(@c)).page(params[:page]).per(16)
     @staging = Kaminari.paginate_array(Item.just_for(@s)).page(params[:page]).per(16)
+    
+    respond_to do |format|
+      format.html
+      format.js  
+    end
   end
 
 
@@ -69,7 +74,15 @@ class ItemsController < ApplicationController
   end
   
   def add_list_item
-    
+    session[:item_ids] = Array.new if session[:item_ids].nil?
+    session[:item_ids] << params[:id]
+    redirect_to item_path(params[:id])
+  end
+  
+  def remove_from_list
+    item_to_remove = params[:id]
+    session[:item_ids].delete_at(session[:item_ids].index(item_to_remove))
+    redirect_to(items_path, :notice => "Item was removed from your list.")
   end
   
   def browse_subcategories

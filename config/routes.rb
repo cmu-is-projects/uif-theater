@@ -1,5 +1,9 @@
 Uifcostumes::Application.routes.draw do
   
+  resources :returns
+
+  resources :requests
+
   resources :colors
 
   # Authentication
@@ -31,6 +35,7 @@ Uifcostumes::Application.routes.draw do
   match 'deleteuser/:id' => 'user#destroy', :as => :destroy_user
   match 'updateuser/:id' => 'user#update', :as => :update_user
   match 'browsesubcategories/:id' => 'items#browse_subcategories', :as => :browse_subcategories
+  match 'removefromlist/:id' => 'items#remove_from_list', :as => :remove_from_list
 
   # Default route
   root :to => 'home#home'

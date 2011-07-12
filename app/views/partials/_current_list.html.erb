@@ -1,0 +1,17 @@
+<strong>My Current List</strong>
+
+<% unless session[:item_ids].nil? %>
+	<!-- <br><strong><%# session[:item_ids].size %></strong><br /> -->
+	<% session[:item_ids].each do |item_id| %>
+	
+		<div class="list_item">
+			<!-- <p> -->
+				<%= link_to(image_tag("/images/icons/close.gif", :border => 0), remove_from_list_path(item_id)) %>&nbsp; 
+				<%= link_to "#{Item.find(item_id).name}", item_path(item_id) %>
+			<!-- </p> -->
+		</div>
+
+	<% end %>
+<% end %>
+
+<%# add a checkout/print button %>

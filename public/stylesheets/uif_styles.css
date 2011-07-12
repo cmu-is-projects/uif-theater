@@ -416,6 +416,14 @@ background: none;
 	
 }
 
+/********** CURRENT LIST ********/
+.list_item {
+	padding: 10px 5px 0px 0px;
+}
+
+
+
+
 #item_slides {
 	overflow:hidden;
 	position:relative;
@@ -448,4 +456,5 @@ background: none;
 	font-weight:bold;
 	font-size:85%;
 	height:10px;
+	padding:0px 10px 10px 0px;
 }

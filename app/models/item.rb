@@ -105,5 +105,15 @@ class Item < ActiveRecord::Base
     results = Array.new
     self.categories.map{|c| results << c if c.name == "Props" || c.subcategory_of}
   end
+  
+  def is_a_costume?
+    results = Array.new
+    self.categories.map{|c| results << c if c.name == "Costumes" || c.subcategory_of}
+  end
+  
+  def is_staging?
+    results = Array.new
+    self.categories.map{|c| results << c if c.name == "Staging" || c.subcategory_of}
+  end
     
 end
