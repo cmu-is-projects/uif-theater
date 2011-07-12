@@ -86,7 +86,6 @@ class ItemsController < ApplicationController
   end
   
   def browse_subcategories
-    # redirect_to(items_path, :id => params[:id])
     @p = (params[:id].nil? ? "Props" : "#{Category.find(params[:id]).name}")
     @c = (params[:id].nil? ? "Costumes" : "#{Category.find(params[:id]).name}")
     @s = (params[:id].nil? ? "Staging" : "#{Category.find(params[:id]).name}")
