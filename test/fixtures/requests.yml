@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  requestor_id: 1
+  production: MyString
+  status: MyString
+  date_processed: 2011-07-12 15:58:36
+  approver_id: 1
+  date_needed_by: 2011-07-12
+
+two:
+  requestor_id: 1
+  production: MyString
+  status: MyString
+  date_processed: 2011-07-12 15:58:36
+  approver_id: 1
+  date_needed_by: 2011-07-12

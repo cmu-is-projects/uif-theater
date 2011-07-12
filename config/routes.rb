@@ -1,10 +1,4 @@
 Uifcostumes::Application.routes.draw do
-  
-  resources :returns
-
-  resources :requests
-
-  resources :colors
 
   # Authentication
   devise_for :users
@@ -16,9 +10,12 @@ Uifcostumes::Application.routes.draw do
   
   # Other generated routes
   resources :categories
+  resources :colors
   resources :locations
   resources :photos
   resources :genders
+  resources :request_items
+  resources :requests
   
   # Semi-static routes
   match 'home' => 'home#home', :as => :home

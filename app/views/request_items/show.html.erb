@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Item:</b>
+  <%= @request_item.item_id %>
+</p>
+
+<p>
+  <b>Request:</b>
+  <%= @request_item.request_id %>
+</p>
+
+<p>
+  <b>Quantity requested:</b>
+  <%= @request_item.quantity_requested %>
+</p>
+
+<p>
+  <b>Quantity approved:</b>
+  <%= @request_item.quantity_approved %>
+</p>
+
+<p>
+  <b>Date checked out:</b>
+  <%= @request_item.date_checked_out %>
+</p>
+
+
+<%= link_to 'Edit', edit_request_item_path(@request_item) %> |
+<%= link_to 'Back', request_items_path %>

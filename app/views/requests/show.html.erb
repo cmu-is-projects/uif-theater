@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Requestor:</b>
+  <%= @request.requestor_id %>
+</p>
+
+<p>
+  <b>Production:</b>
+  <%= @request.production %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @request.status %>
+</p>
+
+<p>
+  <b>Date processed:</b>
+  <%= @request.date_processed %>
+</p>
+
+<p>
+  <b>Approver:</b>
+  <%= @request.approver_id %>
+</p>
+
+<p>
+  <b>Date needed by:</b>
+  <%= @request.date_needed_by %>
+</p>
+
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>
