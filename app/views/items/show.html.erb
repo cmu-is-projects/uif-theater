@@ -1,4 +1,4 @@
-<%= debug session %>
+<%# debug session %>
 <table border="0" cellspacing="5" cellpadding="5">
 	<tr>
 		<!-- Main column -->
@@ -11,7 +11,7 @@
 		
 		<!-- List column -->
 		<td class="my_list" valign="top" width="300" rowspan="3">
-			<strong>My Current List</strong>
+			<%= render :partial => "partials/current_list" %>
 		</td>
 	</tr>
 	
