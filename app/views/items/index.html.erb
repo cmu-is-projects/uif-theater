@@ -14,8 +14,12 @@
 					<%= render :partial => "partials/display_subcategories", :locals => {:subcategories  => @subcat_costumes} %>
 				</td>
 				<td width="400" valign="top">
-					<%= render :partial => "partials/display_items_table", :locals => {:items  => @costumes} %>
-					<%= paginate @costumes %>
+					<div id="costume_items">
+						<%= render :partial => "partials/display_items_table", :locals => {:items  => @costumes} %>
+					</div>
+					<div id="paginate_costumes">
+					  <%= paginate @costumes, :remote => true %>
+					</div>
 				</td>
 			<tr></table>
 		</div>
@@ -26,9 +30,13 @@
 				<td wdith="160" valign="top">
 					<%= render :partial => "partials/display_subcategories", :locals => {:subcategories  => @subcat_props} %>
 				</td>
-				<td width="400" valign="top">
-					<%= render :partial => "partials/display_items_table", :locals => {:items  => @props} %>
-					<%= paginate @props %>
+				<td width="400" valign="top" id="prop_items">
+					<div id="prop_items">
+						<%= render :partial => "partials/display_items_table", :locals => {:items  => @props} %>
+					</div>
+					<div id="paginate_props">
+					  <%= paginate @props, :remote => true %>
+					</div>
 				</td>
 			<tr></table>
 		</div>
@@ -39,9 +47,13 @@
 				<td wdith="160" valign="top">
 					<%= render :partial => "partials/display_subcategories", :locals => {:subcategories  => @subcat_staging} %>
 				</td>
-				<td width="400" valign="top">
-					<%= render :partial => "partials/display_items_table", :locals => {:items  => @staging} %>
-					<%= paginate @staging %>
+				<td width="400" valign="top" id="staging_items">
+					<div id="staging_items">
+						<%= render :partial => "partials/display_items_table", :locals => {:items  => @staging} %>
+					</div>
+					<div id="paginate_staging">
+					  <%= paginate @staging, :remote => true %>
+					</div>
 				</td>
 			<tr></table>
 		</div>

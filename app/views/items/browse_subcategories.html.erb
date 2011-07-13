@@ -1,47 +1,55 @@
+<%# debug params %>
 <% unless current_user.is_partner? %>
 	<div id="add_widget"><%= link_to '+ Add a New Item', new_item_path %></div>
 <% end %>
-<h1>Browse Catalog</h1>
 
-<div id="accordion">
+<table border="0">
+	<tr><td width="600" valign="top">
+	<h1>Browse Catalog</h1>
+	<div id="accordion">
 	
-	<h6><%= link_to(image_tag("forms/search_costumes.png"),"#") %></h6>
-	<div class="browse_section">
-		<table border="0"><tr>
-			<td wdith="160" valign="top">
-				<%= render :partial => "partials/display_subcategories", :locals => {:subcategories  => @subcat_costumes} %>
-			</td>
-			<td width="400" valign="top">
-				<%= render :partial => "partials/display_items_table", :locals => {:items  => @costumes} %>
-				<%= paginate @costumes %>
-			</td>
-		<tr></table>
+		<h6><%= link_to(image_tag("forms/search_costumes.png"),"#") %></h6>
+		<div class="browse_section">
+			<table border="0"><tr>
+				<td wdith="160" valign="top">
+					<%= render :partial => "partials/display_subcategories", :locals => {:subcategories  => @subcat_costumes} %>
+				</td>
+				<td width="400" valign="top" id="costume_items">
+					<%= render :partial => "partials/display_items_table", :locals => {:items  => @costumes} %>
+					<%= paginate @costumes %>
+				</td>
+			<tr></table>
+		</div>
+	
+		<h6><%= link_to(image_tag("forms/search_props.png"),"#") %></h6>
+		<div class="browse_section">
+			<table border="0"><tr>
+				<td wdith="160" valign="top">
+					<%= render :partial => "partials/display_subcategories", :locals => {:subcategories  => @subcat_props} %>
+				</td>
+				<td width="400" valign="top" id="prop_items">
+					<%= render :partial => "partials/display_items_table", :locals => {:items  => @props} %>
+					<%= paginate @props %>
+				</td>
+			<tr></table>
+		</div>
+	
+		<h6><%= link_to(image_tag("forms/search_staging.png"),"#") %></h6>
+		<div class="browse_section">
+			<table border="0"><tr>
+				<td wdith="160" valign="top">
+					<%= render :partial => "partials/display_subcategories", :locals => {:subcategories  => @subcat_staging} %>
+				</td>
+				<td width="400" valign="top" id="staging_items">
+					<%= render :partial => "partials/display_items_table", :locals => {:items  => @staging} %>
+					<%= paginate @staging %>
+				</td>
+			<tr></table>
+		</div>
 	</div>
-	
-	<h6><%= link_to(image_tag("forms/search_props.png"),"#") %></h6>
-	<div class="browse_section">
-		<table border="0"><tr>
-			<td wdith="160" valign="top">
-				<%= render :partial => "partials/display_subcategories", :locals => {:subcategories  => @subcat_props} %>
-			</td>
-			<td width="400" valign="top">
-				<%= render :partial => "partials/display_items_table", :locals => {:items  => @props} %>
-				<%= paginate @props %>
-			</td>
-		<tr></table>
-	</div>
-	
-	<h6><%= link_to(image_tag("forms/search_staging.png"),"#") %></h6>
-	<div class="browse_section">
-		<table border="0"><tr>
-			<td wdith="160" valign="top">
-				<%= render :partial => "partials/display_subcategories", :locals => {:subcategories  => @subcat_staging} %>
-			</td>
-			<td width="400" valign="top">
-				<%= render :partial => "partials/display_items_table", :locals => {:items  => @staging} %>
-				<%= paginate @staging %>
-			</td>
-		<tr></table>
-	</div>
-	
-</div>
+	</td>
+	<td class="my_list" valign="top" width="250">
+		<%= render :partial => "partials/current_list" %>
+	</td>
+	</tr>
+</table>

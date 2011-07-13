@@ -1,1 +1,11 @@
-$("#items").html("<%= escape_javascript(render(@items)) %>");
+<%# Handling costumes via ajax %>
+$("#costume_items").html("<%= escape_javascript(render :partial => "partials/display_items_table", :locals => {:items  => @costumes}) %>");
+$("#paginate_costumes").html("<%= escape_javascript(paginate(@costumes, :remote => true).to_s) %>");
+
+<%# Handling props via ajax %>
+$("#prop_items").html("<%= escape_javascript(render :partial => "partials/display_items_table", :locals => {:items  => @props}) %>");
+$("#paginate_props").html("<%= escape_javascript(paginate(@props, :remote => true).to_s) %>");
+
+<%# Handling staging via ajax %>
+$("#staging_items").html("<%= escape_javascript(render :partial => "partials/display_items_table", :locals => {:items  => @staging}) %>");
+$("#paginate_staging").html("<%= escape_javascript(paginate(@staging, :remote => true).to_s) %>");

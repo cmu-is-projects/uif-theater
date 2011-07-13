@@ -1,0 +1,31 @@
+<h1>Listing request_items</h1>
+
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Request</th>
+    <th>Quantity requested</th>
+    <th>Quantity approved</th>
+    <th>Date checked out</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @request_items.each do |request_item| %>
+  <tr>
+    <td><%= request_item.item_id %></td>
+    <td><%= request_item.request_id %></td>
+    <td><%= request_item.quantity_requested %></td>
+    <td><%= request_item.quantity_approved %></td>
+    <td><%= request_item.date_checked_out %></td>
+    <td><%= link_to 'Show', request_item %></td>
+    <td><%= link_to 'Edit', edit_request_item_path(request_item) %></td>
+    <td><%= link_to 'Destroy', request_item, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Request item', new_request_item_path %>

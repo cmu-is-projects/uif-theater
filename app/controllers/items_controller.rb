@@ -4,9 +4,15 @@ class ItemsController < ApplicationController
   authorize_resource
 
   def index   
-    @p = (params[:id].nil? ? "Props" : "#{Category.find(params[:id]).name}")
-    @c = (params[:id].nil? ? "Costumes" : "#{Category.find(params[:id]).name}")
-    @s = (params[:id].nil? ? "Staging" : "#{Category.find(params[:id]).name}")
+    # session[:subcategory_id] = params[:id]
+    props_cat = (params[:id].nil? ? "Props" : "#{Category.find(params[:id]).name}")
+    costumes_cat = (params[:id].nil? ? "Costumes" : "#{Category.find(params[:id]).name}")
+    staging_cat = (params[:id].nil? ? "Staging" : "#{Category.find(params[:id]).name}")
+    
+    # props_cat = (session[:subcategory_id].nil? ? "Props" : "#{Category.find(session[:subcategory_id]).name}")
+    # costumes_cat = (session[:subcategory_id].nil? ? "Costumes" : "#{Category.find(session[:subcategory_id]).name}")
+    # staging_cat = (session[:subcategory_id].nil? ? "Staging" : "#{Category.find(session[:subcategory_id]).name}")
+    # session[:subcategory_id] = nil
     
     @num_per_row = 4
     
@@ -14,9 +20,9 @@ class ItemsController < ApplicationController
     @subcat_props = Category.all_names_associated_with "Props"
     @subcat_staging = Category.all_names_associated_with "Staging"
     
-    @props = Kaminari.paginate_array(Item.just_for(@p)).page(params[:page]).per(16)
-    @costumes = Kaminari.paginate_array(Item.just_for(@c)).page(params[:page]).per(16)
-    @staging = Kaminari.paginate_array(Item.just_for(@s)).page(params[:page]).per(16)
+    @props = Kaminari.paginate_array(Item.just_for(props_cat)).page(params[:page]).per(16)
+    @costumes = Kaminari.paginate_array(Item.just_for(costumes_cat)).page(params[:page]).per(16)
+    @staging = Kaminari.paginate_array(Item.just_for(staging_cat)).page(params[:page]).per(16)
     
     respond_to do |format|
       format.html
@@ -86,18 +92,20 @@ class ItemsController < ApplicationController
   end
   
   def browse_subcategories
-    @p = (params[:id].nil? ? "Props" : "#{Category.find(params[:id]).name}")
-    @c = (params[:id].nil? ? "Costumes" : "#{Category.find(params[:id]).name}")
-    @s = (params[:id].nil? ? "Staging" : "#{Category.find(params[:id]).name}")
-    
-    @num_per_row = 4
-    
-    @subcat_costumes = Category.all_names_associated_with "Costumes"
-    @subcat_props = Category.all_names_associated_with "Props"
-    @subcat_staging = Category.all_names_associated_with "Staging"
-    
-    @props = Kaminari.paginate_array(Item.just_for(@p)).page(params[:page]).per(16)
-    @costumes = Kaminari.paginate_array(Item.just_for(@c)).page(params[:page]).per(16)
-    @staging = Kaminari.paginate_array(Item.just_for(@s)).page(params[:page]).per(16)
+    session[:subcategory_id] = params[:id]
+    redirect_to items_path
+    # props = (params[:id].nil? ? "Props" : "#{Category.find(params[:id]).name}")
+    # costumes = (params[:id].nil? ? "Costumes" : "#{Category.find(params[:id]).name}")
+    # staging = (params[:id].nil? ? "Staging" : "#{Category.find(params[:id]).name}")
+    # 
+    # @num_per_row = 4
+    # 
+    # @subcat_costumes = Category.all_names_associated_with "Costumes"
+    # @subcat_props = Category.all_names_associated_with "Props"
+    # @subcat_staging = Category.all_names_associated_with "Staging"
+    # 
+    # @props = Kaminari.paginate_array(Item.just_for(props)).page(params[:page]).per(16)
+    # @costumes = Kaminari.paginate_array(Item.just_for(costumes)).page(params[:page]).per(16)
+    # @staging = Kaminari.paginate_array(Item.just_for(staging)).page(params[:page]).per(16)
   end
 end
