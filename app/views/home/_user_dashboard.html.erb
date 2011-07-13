@@ -13,7 +13,7 @@
 			<strong>Quick Links</strong><br /><br />
 			<% unless current_user.is_partner? %>
 			<%= link_to items_path do %>
-				<p><img src="/images/icons/Magnifying_Glass.gif"> Browse Items</p>
+				<p><img src="/images/icons/Magnifying_Glass.png"> Browse Items</p>
 			<% end %>
 			<% if current_user.is_admin? %>	
 			<%= link_to new_item_path do %>
