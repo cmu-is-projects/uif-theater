@@ -26,6 +26,7 @@ class HomeController < ApplicationController
     @props = Kaminari.paginate_array(@p).page(params[:page]).per(21)
     @staging = Kaminari.paginate_array(@s).page(params[:page]).per(21)
     @total_hits = @c.size + @p.size + @s.size
+    @num_per_row = 6
   end
 
 end

@@ -52,7 +52,9 @@
 				<td align="center">&nbsp;<%= user.current_status %></td>
 	    	<td align="center">
 					<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_user_path(user)) %>&nbsp;
-		    	<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), user_path(user), :confirm => 'Are you sure you wish to deactivate this user?', :method => :delete) %>
+		    	<% unless user.status == -1 %>
+						<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), user_path(user), :confirm => 'Are you sure you wish to deactivate this user?', :method => :delete) %>
+					<% end %>
 				</td>  
 			<% end %>
 	  </tr>  
