@@ -31,7 +31,7 @@
 			<% end %>
 			<% unless current_user.is_partner? %>				
 				<p><%= link_to(image_tag("/images/icons/inventory_categories.png", :border => 0), items_path)  %> <%= link_to "Manage Categories", categories_path %></p>
-				<p><%= link_to(image_tag("/images/icons/paint_palette.gif", :border => 0), items_path)  %> <%= link_to "Manage Colors", colors_path %></p>
+				<p><%= link_to(image_tag("/images/icons/Palette.png", :border => 0), items_path)  %> <%= link_to "Manage Colors", colors_path %></p>
 				<p><%= link_to(image_tag("/images/icons/Open-Folder-Full-icon.png", :border => 0), items_path)  %> <%= link_to "Manage Warehouse Locations", locations_path %></p>
 			<% end %>
 		</td>
