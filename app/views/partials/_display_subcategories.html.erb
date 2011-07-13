@@ -1,9 +1,5 @@
 <% for subcategory in subcategories %>
-<<<<<<< HEAD
-	<p><%= link_to "#{subcategory[1]}", items_path(subcategory[0]) %></p>
-=======
 	<p><%= link_to "#{subcategory[1]}", browse_subcategories_path(subcategory[0]), :remote => true %></p>
->>>>>>> ajax
 <% end %>
 
 
