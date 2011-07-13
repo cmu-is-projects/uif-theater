@@ -93,10 +93,13 @@
 	<%= render :partial => "partials/notes_list" %>
 </p>
 
+<br/>
+<br/>
 <% unless current_user.is_partner? %>
-	<p><strong><%= link_to "Add a note", item_notes_path(@item) %></strong> </p>
-	<p><%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_item_path(@item))  %>&nbsp;<%= link_to 'Edit this item', edit_item_path(@item) %> &nbsp;|&nbsp;
-		<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), item_path(@item), :confirm => 'Are you sure you wish to delete this item?', :method => :delete) %>&nbsp;<%= link_to 'Delete this item', item_path(@item), :confirm => 'Are you sure you wish to delete this item?', :method => :delete %>
+	<p><%= image_tag "forms/items_actions.png" %></p>
+	<p><%= link_to(image_tag("icons/add_note.png", :border => 0), items_path(@item))  %>&nbsp;<%= link_to "Add a note", item_notes_path(@item) %>&nbsp;|&nbsp;
+		 <%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_item_path(@item))  %>&nbsp;<%= link_to 'Edit this item', edit_item_path(@item) %> &nbsp;|&nbsp;
+		 <%= link_to(image_tag("icons/delete_dg.gif", :border => 0), item_path(@item), :confirm => 'Are you sure you wish to delete this item?', :method => :delete) %>&nbsp;<%= link_to 'Delete this item', item_path(@item), :confirm => 'Are you sure you wish to delete this item?', :method => :delete %>
 	</p>
 <% end %>
 <p>Back to <%= link_to 'list of all items', items_path %></p>

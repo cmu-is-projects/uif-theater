@@ -1,6 +1,8 @@
-<h1>Editing organization</h1>
+<h1>Editing <%= "#{@organization.name}" %></h1>
 
 <%= render 'form' %>
 
-Back to <%= link_to "#{@organization.name} details", @organization %> <br />
-Back to <%= link_to 'list of all organization', organizations_path %>
+<br/>
+<%= image_tag "forms/items_actions.png" %><br/>
+<%= link_to(image_tag("icons/back_arrow.png", :border => 0), organization_path(@organization))  %>&nbsp;<%= link_to "#{@organization.name} details", @organization %>&nbsp;|&nbsp;
+<%= link_to(image_tag("icons/back_arrow.png", :border => 0), organizations_path(@organizations))  %>&nbsp;<%= link_to "Back to Organizations", organizations_path(@organizations) %>

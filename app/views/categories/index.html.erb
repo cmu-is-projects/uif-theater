@@ -1,8 +1,8 @@
-<% unless current_user.is_partner? %>
+<%  unless current_user.is_partner? %>
 	<div id="add_widget"><%= link_to '+ Add a New Category', new_category_path %></div>
 <% end %>
 
-<h1>Listing categories</h1>
+<h1>Categories</h1>
 
 <table class="datagrid">
   <thead class="datagrid">

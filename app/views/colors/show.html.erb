@@ -1,12 +1,13 @@
-
 <p>
   <b>Name:</b>
   <%= @color.name %>
 </p>
 
+<br/>
 <% unless current_user.is_partner? %>
-	<p><%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_color_path(@color))  %>&nbsp;<%= link_to 'Edit this color', edit_color_path(@color) %> &nbsp;|&nbsp;
-		<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), color_path(@color), :confirm => 'Are you sure you wish to delete this color?', :method => :delete) %>&nbsp;<%= link_to 'Delete this color', color_path(@color), :confirm => 'Are you sure you wish to delete this color?', :method => :delete %>
+	<p><%= image_tag "forms/items_actions.png" %></p>
+	<p><%= link_to(image_tag("icons/edit_dg.gif", :border => 0), colors_path(@colors))  %>&nbsp;<%= link_to 'Edit this Color', colors_path(@colors) %> &nbsp;|&nbsp;
+	<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), colors_path(@colors), :confirm => 'Are you sure you wish to delete this color?', :method => :delete) %>&nbsp;<%= link_to 'Delete this Color', colors_path(@colors), :confirm => 'Are you sure you wish to delete this color?', :method => :delete %> &nbsp;|&nbsp;
+	<%= link_to(image_tag("icons/back_arrow.png", :border => 0), colors_path(@colors))  %>&nbsp;<%= link_to "Back to Colors", colors_path(@colors) %>
 	</p>
 <% end %>
-<p>Back to <%= link_to 'list of all colors', colors_path %></p>

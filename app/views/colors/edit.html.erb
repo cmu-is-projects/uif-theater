@@ -2,4 +2,6 @@
 
 <%= render 'form' %>
 
-Back to <%= link_to 'list of all colors', colors_path %>
+<br/>
+<%= image_tag "forms/items_actions.png" %><br/>
+<%= link_to(image_tag("icons/back_arrow.png", :border => 0), colors_path(@colors))  %>&nbsp;<%= link_to "Back to Colors", colors_path(@colors) %>

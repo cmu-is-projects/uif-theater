@@ -56,10 +56,13 @@
 		</p>
 	<% end %>
 
+	<br/>
+	<br/>
 	<% unless current_user.is_partner? %>
-		<p><strong><%= link_to "Add a note", organization_notes_path(@organization) %></strong> </p>
-		<p><%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_organization_path(@organization))  %>&nbsp;<%= link_to 'Edit this organization', edit_organization_path(@organization) %> &nbsp;|&nbsp;
-			<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), organization_path(@organization), :confirm => 'Are you sure you wish to delete this organization?', :method => :delete) %>&nbsp;<%= link_to 'Delete this organization', organization_path(@organization), :confirm => 'Are you sure you wish to delete this organization?', :method => :delete %>
+		<p><%= image_tag "forms/items_actions.png" %></p>
+		<p><%= link_to(image_tag("icons/add_note.png", :border => 0), organizations_path(@organization))  %>&nbsp;<%= link_to "Add a note", organization_notes_path(@organization) %>&nbsp;|&nbsp;
+			 <%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_organization_path(@organization))  %>&nbsp;<%= link_to 'Edit this item', edit_organization_path(@organization) %> &nbsp;|&nbsp;
+			 <%= link_to(image_tag("icons/delete_dg.gif", :border => 0), organization_path(@organization), :confirm => 'Are you sure you wish to delete this item?', :method => :delete) %>&nbsp;<%= link_to 'Delete this item', organization_path(@organization), :confirm => 'Are you sure you wish to delete this organization?', :method => :delete %>
+			 <%= link_to(image_tag("icons/back_arrow.png", :border => 0), organizations_path)  %>&nbsp;<%= link_to "Back to Organizations", organizations_path %>	
 		</p>
 	<% end %>
-<p>Back to <%= link_to 'list of all organizations', organizations_path %></p>

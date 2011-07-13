@@ -70,10 +70,14 @@
 	          	<br>
 	          	<%= render :partial => "partials/notes_list" %>
 		          </p>
-						<% end %>
-	          <strong><%= link_to "Add a note", user_notes_path(@user) %></strong> <br />
-						<%= link_to 'Edit this user', edit_user_path(@user) %> <br />
-						Back to <%= link_to 'list of all users', user_list_path %>
+						<% end %>						
+							<p><%= image_tag "forms/items_actions.png" %></p>
+							<p>
+								<%= link_to(image_tag("icons/add_note.png", :border => 0), user_notes_path(@user))  %>&nbsp;<%= link_to "Add a note", user_notes_path(@user) %>&nbsp;|&nbsp;
+								<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_user_path(@user))  %>&nbsp;<%= link_to 'Edit this item', edit_user_path(@user) %>
+								<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), user_path(@user), :confirm => 'Are you sure you wish to delete this user?', :method => :delete) %>&nbsp;<%= link_to 'Delete this user', user_path(@item), :confirm => 'Are you sure you wish to delete this user?', :method => :delete %>
+								<%= link_to(image_tag("icons/back_arrow.png", :border => 0), users_path) %>&nbsp;<%= link_to "Back to Users", users_path %>
+							</p>
 					<% end %>
     		</td>
     	</tr>

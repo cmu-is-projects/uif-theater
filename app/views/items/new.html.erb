@@ -2,4 +2,6 @@
 <% @this_action = 'add' %>
 <%= render 'form' %>
 
-Back to <%= link_to 'list of all items', items_path %>
+<br/>
+<p><%= image_tag "forms/items_actions.png" %></p>
+<p><%= link_to(image_tag("icons/back_arrow.png", :border => 0), items_path(@items))  %>&nbsp;<%= link_to "Back to Items", items_path(@items) %></p>
