@@ -12,7 +12,7 @@
 
 <% unless current_user.is_partner? %>
 	<p><%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_gender_path(@gender))  %>&nbsp;<%= link_to 'Edit this gender', edit_gender_path(@gender) %> &nbsp;|&nbsp;
-		<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), gender_path(@gender), :confirm => 'Are you sure you wish to delete this gender?', :method => :delete) %>&nbsp;<%= link_to 'Delete this gender', gender_path(@gender), :confirm => 'Are you sure you wish to delete this gender?', :method => :delete %>
+		 <%= link_to(image_tag("icons/delete_dg.gif", :border => 0), gender_path(@gender), :confirm => 'Are you sure you wish to delete this gender?', :method => :delete) %>&nbsp;<%= link_to 'Delete this gender', gender_path(@gender), :confirm => 'Are you sure you wish to delete this gender?', :method => :delete %>
 	</p>
 <% end %>
 <p>Back to <%= link_to 'list of all genders', genders_path %></p>

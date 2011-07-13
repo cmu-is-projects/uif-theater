@@ -10,31 +10,27 @@
       </ul>
     </div>
   <% end %>
-
+	<% unless current_user.is_partner? %>
   <div class="field">
     <%= f.label :requestor_id %><br />
-    <%= f.text_field :requestor_id %>
+    <%= f.collection_select :requestor_id, User.alphabetical.all, :id, :formal_name, :prompt => "Select ..." %>
   </div>
+	<% end %>
   <div class="field">
     <%= f.label :production %><br />
     <%= f.text_field :production %>
   </div>
+	<div class="field">
+    <%= f.label :date_needed_by %><br />
+    <%= f.date_select :date_needed_by, :order => [:month, :day, :year] %>
+  </div>
+	<% unless current_user.is_partner? %>
   <div class="field">
     <%= f.label :status %><br />
-    <%= f.text_field :status %>
+    <%= f.select :status, Request::STATUS_LIST, :prompt => "Select ..." %>
   </div>
-  <div class="field">
-    <%= f.label :date_processed %><br />
-    <%= f.datetime_select :date_processed %>
-  </div>
-  <div class="field">
-    <%= f.label :approver_id %><br />
-    <%= f.text_field :approver_id %>
-  </div>
-  <div class="field">
-    <%= f.label :date_needed_by %><br />
-    <%= f.date_select :date_needed_by %>
-  </div>
+	<% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

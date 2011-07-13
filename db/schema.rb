@@ -10,117 +10,138 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110701141541) do
+ActiveRecord::Schema.define(:version => 20110712200018) do
 
   create_table "categories", :force => true do |t|
-    t.string   "name"
-    t.integer  "subcategory_of"
-    t.boolean  "active",         :default => true
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "name"
+    t.integer   "subcategory_of"
+    t.boolean   "active",         :default => true
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "colors", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "name"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "genders", :force => true do |t|
-    t.string   "name"
-    t.boolean  "active",     :default => true
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "name"
+    t.boolean   "active",     :default => true
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "item_categories", :force => true do |t|
-    t.integer  "item_id"
-    t.integer  "category_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "item_id"
+    t.integer   "category_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "item_colors", :force => true do |t|
-    t.integer  "item_id"
-    t.integer  "color_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "item_id"
+    t.integer   "color_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "item_genders", :force => true do |t|
-    t.integer  "item_id"
-    t.integer  "gender_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "item_id"
+    t.integer   "gender_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "items", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "keywords"
-    t.string   "status"
-    t.string   "size"
-    t.integer  "quantity"
-    t.integer  "location_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "name"
+    t.text      "description"
+    t.string    "keywords"
+    t.string    "status"
+    t.string    "size"
+    t.integer   "quantity"
+    t.integer   "location_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "locations", :force => true do |t|
-    t.string   "storage_type"
-    t.string   "storage_unit"
-    t.integer  "container"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "storage_type"
+    t.string    "storage_unit"
+    t.integer   "container"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "notes", :force => true do |t|
-    t.integer  "user_id"
-    t.text     "content"
-    t.integer  "notable_id"
-    t.string   "notable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "user_id"
+    t.text      "content"
+    t.integer   "notable_id"
+    t.string    "notable_type"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "organizations", :force => true do |t|
-    t.string   "name"
-    t.string   "street"
-    t.string   "city"
-    t.string   "zip"
-    t.string   "phone"
-    t.boolean  "active",     :default => true
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "name"
+    t.string    "street"
+    t.string    "city"
+    t.string    "zip"
+    t.string    "phone"
+    t.boolean   "active",     :default => true
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "photos", :force => true do |t|
+    t.integer   "item_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "image"
+  end
+
+  create_table "request_items", :force => true do |t|
     t.integer  "item_id"
+    t.integer  "request_id"
+    t.integer  "quantity_requested"
+    t.integer  "quantity_approved"
+    t.datetime "date_checked_out"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image"
+  end
+
+  create_table "requests", :force => true do |t|
+    t.integer  "requestor_id"
+    t.string   "production"
+    t.string   "status"
+    t.datetime "date_processed"
+    t.integer  "approver_id"
+    t.date     "date_needed_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.integer  "organization_id"
-    t.string   "role"
-    t.integer  "status"
-    t.string   "phone"
-    t.text     "reason"
+    t.string    "email",                                 :default => "", :null => false
+    t.string    "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string    "reset_password_token"
+    t.timestamp "reset_password_sent_at"
+    t.timestamp "remember_created_at"
+    t.integer   "sign_in_count",                         :default => 0
+    t.timestamp "current_sign_in_at"
+    t.timestamp "last_sign_in_at"
+    t.string    "current_sign_in_ip"
+    t.string    "last_sign_in_ip"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "first_name"
+    t.string    "last_name"
+    t.integer   "organization_id"
+    t.string    "role"
+    t.integer   "status"
+    t.string    "phone"
+    t.text      "reason"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

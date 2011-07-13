@@ -1,0 +1,14 @@
+<table class="datagrid">
+  <thead class="datagrid">
+		<th width="75" align="left">&nbsp;Date</th>
+		<th width="125" align="center">&nbsp;Production</th>
+		<th>&nbsp;</th>
+  </thead>
+
+	<% for request in @user.requests %>  
+	  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">  
+	  	<td>&nbsp;<%= link_to request.created_at.strftime("%b %e, %Y") %></td>  
+			<td align="center">&nbsp;<%= request.production %></td>  
+	  </tr>  
+	<% end %>
+</table>

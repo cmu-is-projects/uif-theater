@@ -33,6 +33,8 @@ Uifcostumes::Application.routes.draw do
   match 'updateuser/:id' => 'user#update', :as => :update_user
   match 'browsesubcategories/:id' => 'items#index', :as => :browse_subcategories
   match 'removefromlist/:id' => 'items#remove_from_list', :as => :remove_from_list
+  match 'approveuser/:id' => 'user#approve_user', :as => :approve_user
+  match 'rejectuser/:id' => 'user#reject_user', :as => :reject_user
 
   # Default route
   root :to => 'home#home'

@@ -2,7 +2,8 @@ class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.xml
   def index
-    @requests = Request.all
+    @requests = Request.not_pending.chronological.page(params[:page]).per(10)
+    @pending_requests = Request.pending.chronological.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,14 +42,24 @@ class RequestsController < ApplicationController
   # POST /requests.xml
   def create
     @request = Request.new(params[:request])
+    @request.requestor_id = current_user.id if params[:request][:requestor_id].nil?
+    @request.status = 'pending' if current_user.is_partner?
+    @request.date_processed = Time.now if @request.status == 'approved'
+    @request.approver_id = current_user.id if @request.status == 'approved'
 
     respond_to do |format|
       if @request.save
-        format.html { redirect_to(@request, :notice => 'Request was successfully created.') }
-        format.xml  { render :xml => @request, :status => :created, :location => @request }
+        session[:item_ids].each do |item_id|
+          ri = RequestItem.new
+          ri.request_id = @request.id
+          ri.item_id = item_id
+          ri.date_checked_out = Time.now
+          ri.save!
+        end
+        
+        format.html { redirect_to(@request, :notice => 'Your request was successfully recorded.') }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @request.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -57,6 +68,8 @@ class RequestsController < ApplicationController
   # PUT /requests/1.xml
   def update
     @request = Request.find(params[:id])
+    @request.approver_id = current_user.id
+    @request.date_processed = Time.now
 
     respond_to do |format|
       if @request.update_attributes(params[:request])

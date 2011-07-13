@@ -44,26 +44,17 @@
 		<td width="250" valign="top" class="show">
 			<%= image_tag "forms/orderhis-section.png" %>
 			<p>
-			  <b>Recent orders</b>
+			  <% if @user.requests.empty? %>
+					<p>No requests have been made.</p>
+				<% else %>
+					<%= render :partial => "user_requests" %>
+				<% end %>
 			</p>
-		<div>
-			<table cellspacing="0" cellpadding="3" border="0">
-        <tbody>
-			    <tr>
-			      <td width="100">
-              <p>Order Date</p>
-            </td>
-            <td width="150">
-              <p>Order Summary</p>
-            </td>
-         </tr
-       </tbody>
-      </table>
-      </div>
-		
+		</td>
+		</tr>
 			<!-- Bottom left cell -->
     	<tr>
-    		<td valign="top" class="show">
+    		<td valign="top" class="show" colspan="3">
 					<% unless current_user.is_partner? %>				
           	<% unless @notes.empty? || @notes.nil? %>
 							<strong>Notes:</strong><br />
@@ -71,18 +62,20 @@
 	          	<%= render :partial => "partials/notes_list" %>
 		          </p>
 						<% end %>						
-							<p><%= image_tag "forms/items_actions.png" %></p>
-							<p>
-								<%= link_to(image_tag("icons/add_note.png", :border => 0), user_notes_path(@user))  %>&nbsp;<%= link_to "Add a note", user_notes_path(@user) %>&nbsp;|&nbsp;
-								<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_user_path(@user))  %>&nbsp;<%= link_to 'Edit this item', edit_user_path(@user) %>
-								<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), user_path(@user), :confirm => 'Are you sure you wish to delete this user?', :method => :delete) %>&nbsp;<%= link_to 'Delete this user', user_path(@item), :confirm => 'Are you sure you wish to delete this user?', :method => :delete %>
-								<%= link_to(image_tag("icons/back_arrow.png", :border => 0), users_path) %>&nbsp;<%= link_to "Back to Users", users_path %>
-							</p>
 					<% end %>
     		</td>
     	</tr>
 		</td>
 	</tr>
 </table>
+<% unless current_user.is_partner? %>
+<p><%= image_tag "forms/items_actions.png" %></p>
+<p>
+	<%= link_to(image_tag("icons/add_note.png", :border => 0), user_notes_path(@user))  %>&nbsp;<%= link_to "Add a note", user_notes_path(@user) %> &nbsp;|&nbsp;
+	<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_user_path(@user))  %>&nbsp;<%= link_to 'Edit this user', edit_user_path(@user) %> &nbsp;|&nbsp;
+	<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), user_path(@user), :confirm => 'Are you sure you wish to delete this user?', :method => :delete) %>&nbsp;<%= link_to 'Delete this user', user_path(@item), :confirm => 'Are you sure you wish to delete this user?', :method => :delete %> &nbsp;|&nbsp;
+	<%= link_to(image_tag("icons/back_arrow.png", :border => 0), user_index_path) %>&nbsp;<%= link_to "Back to Users", user_index_path %>
+</p>
+<% end %>
 
 

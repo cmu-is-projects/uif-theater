@@ -5,10 +5,10 @@ class RequestItem < ActiveRecord::Base
 	belongs_to :item
 	
 	# Validations
-	validates_numericality_of :quantity_requested, :only_integer => true, :greater_than => 0
-	validates_numericality_of :quantity_approved, :only_integer => true, :greater_than => 0
+	validates_numericality_of :quantity_requested, :only_integer => true, :greater_than => 0, :allow_blank => true
+	validates_numericality_of :quantity_approved, :only_integer => true, :greater_than => 0, :allow_blank => true
 	validates_numericality_of :request_id, :only_integer => true, :greater_than => 0
 	validates_numericality_of :item_id, :only_integer => true, :greater_than => 0
-	validates_datetime :date_checked_out
+	validates_datetime :date_checked_out, :allow_blank => true
 	
 end

@@ -14,7 +14,18 @@ class Request < ActiveRecord::Base
 	# validates_datetime :date_of_request 
 	
 	# List of statuses
-	STATUS_LIST = [['Approved', 1], ['Pending', 0], ['Rejected', -1]]
+	STATUS_LIST = [['Approved', 'approved'], ['Pending', 'pending'], ['Rejected', 'rejected']]
   
+  # Scopes
+  scope :approved, where('status = ?', 'approved')
+  scope :pending, where('status = ?', 'pending')
+  scope :rejected, where('status = ?', 'rejected')
+  scope :not_pending, where('status != ?', 'pending')
+  scope :chronological, order('created_at DESC')
+  
+  # Other methods
+  def current_status
+    status.capitalize
+  end
 	
 end

@@ -2,6 +2,7 @@ class UserController < ApplicationController
   
   def index
     @users = User.alphabetical.page(params[:page]).per(10)
+    @pending_users = User.pending.alphabetical.all
   end
 
 
@@ -58,6 +59,24 @@ class UserController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(user_index_path, :notice => "#{@user.name} was deactivated.") }
       format.xml  { head :ok }
+    end
+  end
+  
+  def approve_user
+    @user = User.find(params[:id])
+    @user.status = 1
+    @user.update_attribute(:status, 1)
+    respond_to do |format|
+      format.html { redirect_to(user_index_path, :notice => "#{@user.name} was approved.") }
+    end
+  end
+  
+  def reject_user
+    @user = User.find(params[:id])
+    @user.status = -1
+    @user.update_attribute(:status, -1)
+    respond_to do |format|
+      format.html { redirect_to(user_index_path, :alert => "#{@user.name} was rejected.") }
     end
   end
 end

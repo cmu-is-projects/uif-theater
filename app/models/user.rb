@@ -22,12 +22,17 @@ class User < ActiveRecord::Base
   # Relationships
   belongs_to :organization
   has_many :notes, :as => :notable, :dependent => :destroy
+  has_many :requests, :class_name => "Request", :foreign_key => "requestor_id"
   
   # Callbacks
   before_save :reformat_phone
   
   # List of statuses
   STATUS_LIST = [['Active', 1], ['Pending', 0], ['Inactive', -1]]
+  
+  def approved?
+    status == 1
+  end
   
   # Validations
   validates_presence_of :first_name, :last_name

@@ -1,33 +1,57 @@
-<h1>Listing requests</h1>
 
-<table>
-  <tr>
-    <th>Requestor</th>
-    <th>Production</th>
-    <th>Status</th>
-    <th>Date processed</th>
-    <th>Approver</th>
-    <th>Date needed by</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<% if !current_user.is_partner? && !@pending_requests.empty? %>
+	<h1>Pending Requests</h1>
+	<table class="datagrid">
+	  <thead class="datagrid">
+			<th width="100" align="left">&nbsp;Date</th>
+			<th width="150">&nbsp;Request From</th>
+			<th width="150" align="center">&nbsp;Production</th>
+			<th width="100" align="center">&nbsp;Needed By</th>
+			<th>&nbsp;</th>
+	  </thead>
 
-<% @requests.each do |request| %>
-  <tr>
-    <td><%= request.requestor_id %></td>
-    <td><%= request.production %></td>
-    <td><%= request.status %></td>
-    <td><%= request.date_processed %></td>
-    <td><%= request.approver_id %></td>
-    <td><%= request.date_needed_by %></td>
-    <td><%= link_to 'Show', request %></td>
-    <td><%= link_to 'Edit', edit_request_path(request) %></td>
-    <td><%= link_to 'Destroy', request, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+		<% for request in @pending_requests %>  
+		  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">  
+		  	<td>&nbsp;<%= link_to request.created_at.strftime("%b %e, %Y") %></td>  
+		    <td>&nbsp;<%= link_to request.requestor.name, user_path(request.requestor) %></td>
+				<td align="center">&nbsp;<%= request.production %></td>  
+  			<td align="center">&nbsp;<%= request.date_needed_by.strftime("%b %e, %Y") %></td>
+				<td><%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_request_path(request)) %></td>
+		  </tr>  
+		<% end %>
+	</table>
+	<p>&nbsp;</p>
 <% end %>
+
+<% unless @requests.empty? %>
+<h1>Manage Requests</h1>
+<table class="datagrid">
+  <thead class="datagrid">
+		<th width="100" align="left">&nbsp;Date</th>
+		<th width="150">&nbsp;Request From</th>
+		<th width="150" align="center">&nbsp;Production</th>
+		<th width="100" align="center">&nbsp;Needed By</th>
+		<th width="100" align="center">&nbsp;Status</th>
+		<th>&nbsp;</th>
+  </thead>
+
+	<% for request in @requests %>  
+	  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">  
+	  	<td>&nbsp;<%= link_to request.created_at %></td>  
+	    <td>&nbsp;<%= link_to request.requestor.name, user_path(request.requestor) %></td>
+			<td align="center">&nbsp;<%= request.production %></td>  
+			<td align="center">&nbsp;<%= request.date_needed_by %></td>
+			<td align="center">&nbsp;<%= request.current_status %></td>
+    	<td align="center">
+				<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_request_path(request)) %>&nbsp;
+	    	<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), request_path(request), :confirm => 'Are you sure you wish to delete this request?', :method => :delete) %>
+			</td>  
+	  </tr>  
+	<% end %>
 </table>
+<p class="supertiny">&nbsp;</p>
+<%= paginate @requests %>
+<p class="supertiny">&nbsp;</p>
+<% end %>
 
-<br />
 
-<%= link_to 'New Request', new_request_path %>
