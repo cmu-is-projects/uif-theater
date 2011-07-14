@@ -36,6 +36,8 @@ Uifcostumes::Application.routes.draw do
   match 'approveuser/:id' => 'user#approve_user', :as => :approve_user
   match 'rejectuser/:id' => 'user#reject_user', :as => :reject_user
   match 'opencostumes' => 'items#index', :as => :open_costumes
+  match 'openprops' => 'items#index', :as => :open_props
+  match 'openstaging' => 'items#index', :as => :open_staging
 
   # Default route
   root :to => 'home#home'
