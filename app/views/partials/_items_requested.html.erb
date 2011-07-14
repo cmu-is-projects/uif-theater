@@ -1,5 +1,7 @@
 <strong>Items Requested:</strong>
 
+<% @items = session[:item_ids] if @items.nil? %>
+
 <% unless @items.nil? || @items.empty? %>
 	<% @items.each do |item_id| %>
 		<div class="list_item">
