@@ -13,7 +13,7 @@
 	<% unless current_user.is_partner? %>
   <div class="field">
     <%= f.label :requestor_id %><br />
-    <%= f.collection_select :requestor_id, User.alphabetical.all, :id, :formal_name, :prompt => "Select ..." %>
+    <%= f.collection_select :requestor_id, User.active.alphabetical.all, :id, :formal_name, :prompt => "Select ..." %>
   </div>
 	<% end %>
   <div class="field">
