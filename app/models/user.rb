@@ -19,6 +19,23 @@ class User < ActiveRecord::Base
     role.to_sym == authorized_role
   end
   
+  # Devise: handling new unapproved users
+  def active_for_authentication?
+    super && approved?
+  end
+  
+  def approved?
+    status == 1
+  end
+  
+  def inactive_message
+    if !approved?
+      :not_approved
+    else
+      super
+    end
+  end
+  
   # Relationships
   belongs_to :organization
   has_many :notes, :as => :notable, :dependent => :destroy
