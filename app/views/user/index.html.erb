@@ -7,10 +7,10 @@
 	<table class="datagrid">
 	  <thead class="datagrid">
 			<th width="60" align="left">&nbsp;</th>
-	    <th width="175" align="left">&nbsp;&nbsp;Name</th>
+	    <th width="155" align="left">&nbsp;&nbsp;Name</th>
 			<th width="275">&nbsp;Email</th>
 			<th width="110" align="center">&nbsp;Phone</th>
-			<th width="110" align="center">&nbsp;Approve?</th>
+			<th width="130" align="center">&nbsp;Approve?</th>
 	  </thead>
 
 		<% for user in @pending_users %>  
@@ -34,9 +34,9 @@
 <table class="datagrid">
   <thead class="datagrid">
 		<th width="60" align="left">&nbsp;</th>
-    <th width="175" align="left">&nbsp;&nbsp;Name</th>
+    <th width="155" align="left">&nbsp;&nbsp;Name</th>
 		<th width="275">&nbsp;Email</th>
-		<th width="80" align="center">&nbsp;Phone</th>
+		<th width="100" align="center">&nbsp;Phone</th>
 		<% unless current_user.is_partner? %>
 			<th width="70" align="center">&nbsp;Status</th>
 			<th>&nbsp;</th>
