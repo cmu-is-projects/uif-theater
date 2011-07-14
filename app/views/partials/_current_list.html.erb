@@ -1,6 +1,6 @@
 <strong>Current Request List</strong>
 
-<% unless session[:item_ids].nil? %>
+<% unless session[:item_ids].nil? || session[:item_ids].empty? %>
 
 	<% session[:item_ids].each do |item_id| %>
 	

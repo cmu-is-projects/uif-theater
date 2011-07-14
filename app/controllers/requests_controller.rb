@@ -51,7 +51,8 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     if !@request.items.empty?
       @items = @request.items.map{|i| i.id}
-      session[:item_ids] = @items
+      session[:item_ids] = []
+      @items.each{|i| session[:item_ids] << i}
     else
       @items = session[:item_ids]
     end
@@ -78,7 +79,7 @@ class RequestsController < ApplicationController
           ri.save!
         end
         # clear the session after saved...
-        session[:item_ids] = nil
+        session[:item_ids] = []
         
         format.html { redirect_to(@request, :notice => 'Your request was successfully recorded.') }
       else
@@ -116,6 +117,8 @@ class RequestsController < ApplicationController
           ri.date_checked_out = Time.now
           ri.save!
         end
+        session[:item_ids] = []
+        
         
         format.html { redirect_to(@request, :notice => 'Request was successfully updated.') }
         format.xml  { head :ok }
