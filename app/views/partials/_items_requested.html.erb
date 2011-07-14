@@ -1,6 +1,6 @@
 <strong>Items Requested:</strong>
 
-<% unless @items.empty? %>
+<% unless @items.nil? || @items.empty? %>
 	<% @items.each do |item_id| %>
 		<div class="list_item">
 				<%= link_to(image_tag("/images/icons/close.gif", :border => 0), remove_from_list_path(item_id)) %>&nbsp; 

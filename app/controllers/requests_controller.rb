@@ -77,6 +77,8 @@ class RequestsController < ApplicationController
           ri.date_checked_out = Time.now
           ri.save!
         end
+        # clear the session after saved...
+        session[:item_ids] = nil
         
         format.html { redirect_to(@request, :notice => 'Your request was successfully recorded.') }
       else
