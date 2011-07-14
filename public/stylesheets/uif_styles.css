@@ -22,6 +22,9 @@ h5 {font-family: arial; font-size: 14px; font-weight: normal; color: #535353; ma
 h6 {font-family: arial; font-size: 12px; font-weight: normal; color: #da4500; margin: 5px 5px 10px 5px; outline-width: 0;}
 
 p { color: #787878; line-height: 19px; margin: 5px 5px 10px 15px;}
+ul { color: #787878; line-height: 19px; margin: 5px 5px 10px 5px;}
+li { color: #787878; line-height: 19px; margin: 5px 5px 10px 5px;}
+
 .search_count {font-family: arial; font-size: 14px; font-weight: normal; color: #da4500; margin: 5px 5px 10px 5px; outline-width: 0;}
 
 
