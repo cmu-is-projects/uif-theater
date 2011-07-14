@@ -9,10 +9,16 @@
 </p>
 
 <p>
+  <b>Date needed by:</b>
+  <%= @request.date_needed_by.strftime("%b %e, %Y") unless @request.date_needed_by.nil? %>
+</p>
+
+<p>
   <b>Status:</b>
   <%= @request.status %>
 </p>
 
+<% unless current_user.is_partner? %>
 <p>
   <b>Date processed:</b>
   <%= @request.date_processed.strftime("%b %e, %Y") unless @request.date_processed.nil? %>
@@ -22,8 +28,5 @@
   <b>Approver:</b>
   <%= @request.approver.name unless @request.approver.nil? %>
 </p>
+<% end %>
 
-<p>
-  <b>Date needed by:</b>
-  <%= @request.date_needed_by.strftime("%b %e, %Y") unless @request.date_needed_by.nil? %>
-</p>
