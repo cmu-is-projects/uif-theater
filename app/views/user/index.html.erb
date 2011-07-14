@@ -6,11 +6,11 @@
 	<h1>Pending Accounts</h1>
 	<table class="datagrid">
 	  <thead class="datagrid">
-			<th width="64" align="left">&nbsp;</th>
+			<th width="60" align="left">&nbsp;</th>
 	    <th width="175" align="left">&nbsp;&nbsp;Name</th>
-			<th width="200">&nbsp;Email</th>
-			<th width="100" align="center">&nbsp;Phone</th>
-			<th width="100" align="center">&nbsp;Approve/Reject</th>
+			<th width="275">&nbsp;Email</th>
+			<th width="110" align="center">&nbsp;Phone</th>
+			<th width="110" align="center">&nbsp;Approve?</th>
 	  </thead>
 
 		<% for user in @pending_users %>  
@@ -26,18 +26,19 @@
 		  </tr>  
 		<% end %>
 	</table>
-	<p>&nbsp;</p>
+	<p class="supertiny">&nbsp;</p>
+	<p class="supertiny">&nbsp;</p>
 <% end %>
 
 <h1>Manage Accounts</h1>
 <table class="datagrid">
   <thead class="datagrid">
-		<th width="64" align="left">&nbsp;</th>
+		<th width="60" align="left">&nbsp;</th>
     <th width="175" align="left">&nbsp;&nbsp;Name</th>
-		<th width="200">&nbsp;Email</th>
+		<th width="275">&nbsp;Email</th>
 		<th width="80" align="center">&nbsp;Phone</th>
 		<% unless current_user.is_partner? %>
-			<th width="80" align="center">&nbsp;Status</th>
+			<th width="70" align="center">&nbsp;Status</th>
 			<th>&nbsp;</th>
 		<% end %>
   </thead>

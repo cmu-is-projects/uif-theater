@@ -271,9 +271,21 @@ outline-width: 0;
 	text-align: left;
 }
 
+.lgertext {
+	font-size:200%;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	text-decoration:none;
+	text-align: left;
+}
+
 .medtext {
 	font-size:115%;
 	font-weight:bold;
+	color:#999;
+}
+
+.smtext {
+	font-size:85%;
 	color:#999;
 }
 
