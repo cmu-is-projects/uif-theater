@@ -35,6 +35,7 @@ Uifcostumes::Application.routes.draw do
   match 'removefromlist/:id' => 'items#remove_from_list', :as => :remove_from_list
   match 'approveuser/:id' => 'user#approve_user', :as => :approve_user
   match 'rejectuser/:id' => 'user#reject_user', :as => :reject_user
+  match 'opencostumes' => 'items#index', :as => :open_costumes
 
   # Default route
   root :to => 'home#home'
