@@ -16,7 +16,11 @@
   <p><%= f.label :password %><br />
   <%= f.password_field :password %></p>
 
+	<p>
+		  <%= link_to "Forgot your password?", new_password_path(User) %><br />
+	</p>
+
   <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
 
-  <p><%= f.submit "Sign in" %></p>
+  <p><%= f.submit "Sign In", :id => "add_button" %></p>
 <% end %>

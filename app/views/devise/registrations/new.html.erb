@@ -1,4 +1,4 @@
-<h2>Sign up for access to Thalia</h2>
+<h2>Request an Account</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -46,7 +46,7 @@
 	<%= f.hidden_field :status, :value => 0 %>
 	<%= f.hidden_field :role, :value => "partner" %>
 
-  <p><%= f.submit "Sign up" %></p>
+  <p><%= f.submit "Sign Up", :id => "add_button" %></p>
 <% end %>
 
-<%= render :partial => "devise/shared/links" %>
+<%# render :partial => "devise/shared/links" %>

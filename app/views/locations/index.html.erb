@@ -1,15 +1,15 @@
 <% unless current_user.is_partner? %>
-	<div id="add_widget"><%= link_to '+ Add a New Location', new_location_path %></div>
+	<div id="add_widget"><%= link_to(image_tag("/images/icons/add_blue_small.gif", :border => 0), new_location_path) %> <%= link_to 'Add a New Location', new_location_path %></div>
 <% end %>
 
 <h1>Warehouse Locations</h1>
 
 <table class="datagrid">
   <thead class="datagrid">
-		<th width="64">&nbsp;</th>
-		<th width="100">&nbsp;Storage Type</th>
-		<th width="100">&nbsp;Storage Unit</th>
-		<th width="100">&nbsp;Container</th>
+		<th width="75">&nbsp;</th>
+		<th width="125" align="center">&nbsp;Storage Type</th>
+		<th width="100" align="center">&nbsp;Storage Unit</th>
+		<th width="100" align="center">&nbsp;Container</th>
 		<% unless current_user.is_partner? %>
 			<th>&nbsp;</th>
 		<% end %>
@@ -18,9 +18,9 @@
 <% @locations.each do |location| %>
   <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
 		<td><%= location.name %></td>
-    <td><%= location.storage_type %></td>
-    <td><%= location.storage_unit %></td>
-    <td><%= location.container %></td>
+    <td align="center"><%= location.storage_type %></td>
+    <td align="center"><%= location.storage_unit %></td>
+    <td align="center"><%= location.container %></td>
 		<% unless current_user.is_partner? %>
 			<td align="center">
 				<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_location_path(location))  %>&nbsp;

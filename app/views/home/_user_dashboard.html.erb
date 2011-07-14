@@ -15,7 +15,7 @@
 				<p><%= link_to(image_tag("/images/icons/Magnifying_Glass.png", :border => 0), items_path)  %> <%= link_to "Browse Items", items_path %></p>
 			<% end %>
 			<% if current_user.is_admin? %>	
-				<p><%= link_to(image_tag("/images/icons/add.gif", :border => 0), new_item_path)  %> <%= link_to "Add New Item", new_item_path %></p>
+				<p><%= link_to(image_tag("/images/icons/add_blue.gif", :border => 0), new_item_path)  %> <%= link_to "Add New Item", new_item_path %></p>
 				<p><%= link_to(image_tag("/images/icons/add_user32x32.png", :border => 0), new_user_path)  %> <%= link_to "Add New User", new_user_path %></p>
 				<p><%= link_to(image_tag("/images/icons/handshake_icon.gif", :border => 0), items_path)  %> <%= link_to "Manage Organizations", organizations_path %></p>
 			<% end %>
