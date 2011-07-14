@@ -13,10 +13,12 @@ table.datagrid {
 table.datagrid a {
 	text-decoration: none;
 	color: #4d7bad;
+	outline-width: 0;
 }
 table.datagrid a:hover {
 	text-decoration: underline;
 	color: #092d54;
+	outline-width: 0;
 }
 
 /*	=============================================== */
@@ -40,14 +42,16 @@ thead.datagrid th {
 	height: 28px;
 	font-weight: bold;
 	padding: 10px;
+	outline-width: 0;
 }
 thead.datagrid th:hover {
 	/* background-color: nothing changes right now */
-	
+	outline-width: 0;
 }
 
 td {
 	padding: 0 10px 0 10px;
+	outline-width: 0;
 }
 
 
@@ -106,9 +110,11 @@ td {
 tr.dg {
 	line-height: 2;
 	padding: 2px;
+	outline-width: 0;
 }
 tr.dgalt,th.dgalt,td.dgalt {
 	padding: .75em;
+	outline-width: 0;
 }
 tr.dgalt:hover {
 	background-color: #FFFF99;

@@ -98,6 +98,7 @@ float: right;
 	color:#fff;
 	background-color:#ffa800;
 	border-collapse:collapse;
+	outline-width: 0;
 }
 
 #nav ul {
@@ -107,6 +108,7 @@ float: right;
 	font-size:12px;
 	list-style:none;
 	color: #fff;
+	outline-width: 0;
 }
 
 #nav li { 
@@ -116,6 +118,7 @@ float: right;
 	/* height:100px; */
 	position:relative;
 	color:#fff;
+	outline-width: 0;
 }
 
 #nav a { 
@@ -123,6 +126,7 @@ float: right;
 	display:block;
 	height:100%;
 	color: #fff;
+	outline-width: 0;
 }
 
 #nav span { 
@@ -131,24 +135,29 @@ float: right;
 	height:100%;
 	color:#fff;
 	background:url(../images/icons/blue_down_arrow.gif) right 20px no-repeat;
+	outline-width: 0;
 }
 
 #nav span:hover {
 	cursor:pointer;
+	outline-width: 0;
 }
 
 #nav a:link, #nav a:visited {
 	color: #fff;
 	text-decoration: none;
+	outline-width: 0;
 }
 
 #nav a:hover {
   background: url(../images/hover_overlay.png) no-repeat top left transparent;
 	text-decoration: none;
+	outline-width: 0;
 }
 
 #nav li:hover ul {
 	left: 15px;
+	outline-width: 0;
 }
 
 #nav li ul {
@@ -161,6 +170,7 @@ float: right;
 	behavior: url(../images/iepngfix.htc); /* IE 5.5+ PNG FIX */
 	background:url(../images/drop_shadow.png) bottom right no-repeat;
 	color: #fff;
+	outline-width: 0;
 }
 
 #nav li ul li {
@@ -172,6 +182,7 @@ float: right;
 	border-top:1px solid #1E4A87;
 	border-bottom:1px solid #042E66;
 	background-color:#ffa800;
+	outline-width: 0;
 }
 
 #nav li ul li a {
@@ -179,6 +190,7 @@ float: right;
 	margin:0;
 	text-decoration: none;
 	color: #000;
+	outline-width: 0;
 }
 
 #nav li ul li:hover {
@@ -190,11 +202,13 @@ float: right;
 	border-top:1px solid #1E4A87;
 	border-bottom:1px solid #042E66;
 	background-color: #00469c;
+	outline-width: 0;
 }
 
 #nav li ul li:hover a {
 	padding:10px 10px;
 	margin:0;
+	outline-width: 0;
 }
 /******END OF NAV*********/
 
@@ -204,6 +218,7 @@ width: 950px;
 padding: 0px 30px 0px 0px;
 margin: 0 auto;
 background: url('../images/layout/footer.png');
+outline-width: 0;
 }
 
 #footerinfo p {
@@ -212,21 +227,25 @@ font-size: 10px;
 
 #footerinfo a {
 font-size: 10px;
+outline-width: 0;
 }
 
 #footerinfo a:hover {
 text-decoration: underline;
 background: none;
 color: #283F59;
+outline-width: 0;
 }
 
 #logo{
 margin-left: -15px;
+outline-width: 0;
 }
 
 #logo a:hover{
 text-decoration: none;
 background: none;
+outline-width: 0;
 }
 
 #container {
@@ -236,6 +255,7 @@ background: none;
   padding: 20px 40px;
   border: solid 1px black;
   margin-top: -5px;
+outline-width: 0;
 }
 
 .supertiny {
@@ -318,17 +338,20 @@ background: none;
 	padding: 5px 8px;
   margin: 10px;
 	width: 400px;
+	outline-width: 0;
 }
 
 .note_info {
 	font-size: 65%;
 	font-style: italic;
 	margin: 5px 0px 5px 0px;
+	outline-width: 0;
 }
 
 .note_info img {
 	float: left;
 	margin: 5px 5px 0px 0px;
+	outline-width: 0;
 }
 
 .note_body {
@@ -336,6 +359,7 @@ background: none;
 	width: 375px;
 	height: 100px;
 	font-size: 75%;
+	outline-width: 0;
 }
 
 .note_controls {
@@ -343,6 +367,7 @@ background: none;
 	left: 385px;
 	width: 15px;
 	height: 100px;
+	outline-width: 0;
 }
 
 /********** IMAGE UPLOAD ********/
@@ -361,6 +386,7 @@ background: none;
 	/*border: 1px solid #FFFB5C;*/
 	margin-top: 5px;
 	margin-bottom: 5px;
+	outline-width: 0;
 }
 
 .photo_fields {
@@ -368,6 +394,7 @@ background: none;
 	width: 375px;
 	height: 30px;
 	font-size: 75%;
+	outline-width: 0;
 }
 
 .photo_controls {
@@ -375,6 +402,7 @@ background: none;
 	left: 385px;
 	width: 15px;
 	height: 30px;
+	outline-width: 0;
 }
 
 
@@ -382,17 +410,20 @@ background: none;
 
 .browse_section a {
 	color: #ffa800;
+	outline-width: 0;
 }
 
 
 /********** DISPLAY RESULTS ********/
 .browse_section {
 	position:relative;
+	outline-width: 0;
 }
 
 /********** DISPLAY RESULTS ********/
 .display_results {
 	position:relative;
+	outline-width: 0;
 }
 
 /********** SEARCH BOX ********/
@@ -400,10 +431,12 @@ background: none;
 	margin-left:700px;
 	padding: 12px;
 	width: 500px;
+	outline-width: 0;
 }
 
 #search input[type=text] { 
 	width: 125px; 
+	outline-width: 0;
 }
 
 /********** TABLEHEADER ********/
@@ -419,6 +452,7 @@ background: none;
 /********** CURRENT LIST ********/
 .list_item {
 	padding: 10px 5px 0px 0px;
+	outline-width: 0;
 }
 
 
@@ -428,17 +462,20 @@ background: none;
 	overflow:hidden;
 	position:relative;
 	height:200px;
+	outline-width: 0;
 }
 
 .show b {
 	color:#7F7F7F;
 	font-size:95%;
+	outline-width: 0;
 }
 
 
 .show img {
 	/*float: left;*/
 	margin: 5px 15px 15px 0px;
+	outline-width: 0;
 }
 
 .my_list {
@@ -457,4 +494,5 @@ background: none;
 	font-size:85%;
 	height:10px;
 	padding:0px 10px 10px 0px;
+	outline-width: 0;
 }

@@ -37,14 +37,16 @@
 
 	<% for request in @requests %>  
 	  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">  
-	  	<td>&nbsp;<%= link_to request.created_at %></td>  
+	  	<td>&nbsp;<%= link_to request.created_at.strftime("%b %e, %Y") %></td>  
 	    <td>&nbsp;<%= link_to request.requestor.name, user_path(request.requestor) %></td>
 			<td align="center">&nbsp;<%= request.production %></td>  
-			<td align="center">&nbsp;<%= request.date_needed_by %></td>
+			<td align="center">&nbsp;<%= request.date_needed_by.strftime("%b %e, %Y") %></td>
 			<td align="center">&nbsp;<%= request.current_status %></td>
     	<td align="center">
 				<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_request_path(request)) %>&nbsp;
-	    	<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), request_path(request), :confirm => 'Are you sure you wish to delete this request?', :method => :delete) %>
+	    	<% unless request.status == 'rejected' %>
+					<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), request_path(request), :confirm => 'Are you sure you wish to delete this request?', :method => :delete) %>
+				<% end %>
 			</td>  
 	  </tr>  
 	<% end %>

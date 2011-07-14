@@ -12,17 +12,11 @@
 		<td class="my_list" valign="top" width="300">
 			<strong>Quick Links</strong><br /><br />
 			<% unless current_user.is_partner? %>
-			<%= link_to items_path do %>
-				<p><img src="/images/icons/Magnifying_Glass.png"> Browse Items</p>
+				<p><%= link_to(image_tag("/images/icons/Magnifying_Glass.png", :border => 0), items_path)  %> <%= link_to "Browse Items", items_path %></p>
 			<% end %>
 			<% if current_user.is_admin? %>	
-			<%= link_to new_item_path do %>
-				<p><img src="/images/icons/add.gif"> Add New Item</p>
-			<% end %>
-			<% end %>
-			<%link_to new_user_path do%>
-				<p><img src="/images/icons/	add_user32x32.png"> Add New User</p>
-			<% end %>
+				<p><%= link_to(image_tag("/images/icons/add.gif", :border => 0), new_item_path)  %> <%= link_to "Add New Item", new_item_path %></p>
+				<p><%= link_to(image_tag("/images/icons/add_user32x32.png", :border => 0), new_user_path)  %> <%= link_to "Add New User", new_user_path %></p>
 				<p><%= link_to(image_tag("/images/icons/handshake_icon.gif", :border => 0), items_path)  %> <%= link_to "Manage Organizations", organizations_path %></p>
 			<% end %>
 			<% if current_user.is_coordinator? %>
@@ -38,8 +32,11 @@
 		
 		<!-- Spacer column -->
 		<td width="40">&nbsp;</td>
-		<td>
-
+		<td valign="top">
+			<% if current_user.is_admin? %>
+				<%= render :partial => "pending_users" %><br>
+			<% end %>
+			<%= render :partial => "pending_requests" %>
 		</td>
 	</tr>
 </table>

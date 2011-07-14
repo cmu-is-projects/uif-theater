@@ -1,0 +1,21 @@
+<% unless @pending_requests.empty? %>
+	<%= image_tag "forms/pending_requests.png" %>
+	<table class="datagrid">
+	  <thead class="datagrid">
+			<th width="150">&nbsp;Request From</th>
+			<th width="150" align="center">&nbsp;Production</th>
+			<th width="100" align="center">&nbsp;Needed By</th>
+			<th width="40">&nbsp;</th>
+	  </thead>
+
+		<% for request in @pending_requests %>  
+		  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">  
+		    <td>&nbsp;<%= link_to request.requestor.name, user_path(request.requestor) %></td>
+				<td align="center">&nbsp;<%= request.production %></td>  
+				<td align="center">&nbsp;<%= request.date_needed_by.strftime("%b %e, %Y") %></td>
+				<td><%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_request_path(request)) %></td>
+		  </tr>  
+		<% end %>
+	</table>
+	<p>&nbsp;</p>
+<% end %>

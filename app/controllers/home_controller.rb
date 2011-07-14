@@ -3,6 +3,7 @@ class HomeController < ApplicationController
     if user_signed_in?
 		  redirect_to items_path if current_user.is_partner?
       @pending_users = User.pending.alphabetical.all
+      @pending_requests = Request.pending.chronological.all
     else
       @user = User.new
     end
@@ -19,13 +20,13 @@ class HomeController < ApplicationController
   
   def search
     @query=params[:query]
-    @c = Item.search(@query, "costumes")
-    @p = Item.search(@query, "props")
-    @s = Item.search(@query, "staging")
-    @costumes = Kaminari.paginate_array(@c).page(params[:page]).per(21)
-    @props = Kaminari.paginate_array(@p).page(params[:page]).per(21)
-    @staging = Kaminari.paginate_array(@s).page(params[:page]).per(21)
-    @total_hits = @c.size + @p.size + @s.size
+    costumes = Item.search(@query, "costumes")
+    props = Item.search(@query, "props")
+    staging = Item.search(@query, "staging")
+    @costumes = Kaminari.paginate_array(costumes).page(params[:page]).per(21)
+    @props = Kaminari.paginate_array(props).page(params[:page]).per(21)
+    @staging = Kaminari.paginate_array(staging).page(params[:page]).per(21)
+    @total_hits = costumes.size + props.size + staging.size
     @num_per_row = 6
   end
 
