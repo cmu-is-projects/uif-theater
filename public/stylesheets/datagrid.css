@@ -79,13 +79,12 @@ td {
 }
 .dg_list_line_even img {
 	vertical-align: middle;
-	padding: 0px 0px 10px 8px;
-	outline-width: 0;
+	padding: 0px 0px 2px 8px;
 	outline-width: 0;
 }
 .dg_list_line_odd img {
 	vertical-align: middle;
-	padding: 0px 0px 10px 8px;
+	padding: 0px 0px 2px 8px;
 	outline-width: 0;
 }
 .dg_list_line_odd:hover {

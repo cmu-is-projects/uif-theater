@@ -1,10 +1,10 @@
-<p><strong>All partners at <%= @organization.name %></strong></p>
+<!-- <p><strong>All partners at <%# @organization.name %></strong></p> -->
 <table class="datagrid">
   <thead class="datagrid">
-    <th width="175" align="left">&nbsp;&nbsp;Name</th>
-		<th width="125">&nbsp;&nbsp;Phone</th>
+    <th width="150" align="left">&nbsp;&nbsp;Name</th>
+		<th width="100">&nbsp;&nbsp;Phone</th>
 		<th width="75">Status</th>
-		<th>&nbsp;</th>
+		<th width="75">&nbsp;</th>
   </thead>
   
 <% for person in @members %>
@@ -12,9 +12,12 @@
     <td align="left">&nbsp;<%= link_to person.name, user_path(person) %></td>
 		<td align="left">&nbsp;<%= number_to_phone person.phone %></td>
 		<td align="left">&nbsp;<%= person.current_status %></td>
-		<td align="center">
-		<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_user_path(person))  %>&nbsp;
-  </td>
+		<% unless current_user.is_partner? %>
+			<td align="center">
+				<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_user_path(person))  %>&nbsp;
+				<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), user_path(person), :confirm => 'Are you sure you wish to deactivate this user?', :method => :delete) %>
+		 	</td>
+		<% end %>
   </tr>
 <% end %>
 </table>

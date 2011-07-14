@@ -82,6 +82,7 @@
 				</p>
 			<% end %>
 			<% if @item.status == "available" %>
+				<p class="supertiny">&nbsp;</p>
 				<p><%= button_to "Add to My List", add_list_item_path(@item), :id => "add_button" %></p>
 			<% end %>
 		</td>
