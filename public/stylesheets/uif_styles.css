@@ -493,6 +493,12 @@ outline-width: 0;
 	outline-width: 0;
 }
 
+.show p img {
+	/*float: left;*/
+	margin: 0px 15px 0px 0px;
+	outline-width: 0;
+}
+
 .my_list {
 	background-color: #FCFFBA;
 	padding: 5px 5px 5px 10px;
