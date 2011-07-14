@@ -15,15 +15,15 @@
 
 <p>
   <b>Date processed:</b>
-  <%= @request.date_processed.strftime("%b %e, %Y") %>
+  <%= @request.date_processed.strftime("%b %e, %Y") unless @request.date_processed.nil? %>
 </p>
 
 <p>
   <b>Approver:</b>
-  <%= @request.approver.name %>
+  <%= @request.approver.name unless @request.approver.nil? %>
 </p>
 
 <p>
   <b>Date needed by:</b>
-  <%= @request.date_needed_by.strftime("%b %e, %Y") %>
+  <%= @request.date_needed_by.strftime("%b %e, %Y") unless @request.date_needed_by.nil? %>
 </p>
