@@ -1,0 +1,21 @@
+<% unless @items.empty? %>
+	<h1>Items Requested</h1>
+	<table class="datagrid">
+	  <thead class="datagrid">
+			<th width="175" align="left">&nbsp;Item</th>
+			<% unless current_user.is_partner? %>
+				<th width="100">&nbsp;Location</th>
+			<% end %>
+	  </thead>
+
+		<% for item in @items %>  
+		  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">  
+		  	<td>&nbsp;<%= link_to "#{item.name}", item_path(item) %></td>  
+				<% unless current_user.is_partner? %>
+		    	<td>&nbsp;&nbsp;<%= item.location.name %></td>
+				<% end %>
+		  </tr>  
+		<% end %>
+	</table>
+	<p>&nbsp;</p>
+<% end %>

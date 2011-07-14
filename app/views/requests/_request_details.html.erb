@@ -1,0 +1,29 @@
+<p>
+  <b>Requestor:</b>
+  <%= @request.requestor.name %>
+</p>
+
+<p>
+  <b>Production:</b>
+  <%= @request.production %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @request.status %>
+</p>
+
+<p>
+  <b>Date processed:</b>
+  <%= @request.date_processed.strftime("%b %e, %Y") %>
+</p>
+
+<p>
+  <b>Approver:</b>
+  <%= @request.approver.name %>
+</p>
+
+<p>
+  <b>Date needed by:</b>
+  <%= @request.date_needed_by.strftime("%b %e, %Y") %>
+</p>

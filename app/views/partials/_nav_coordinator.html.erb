@@ -5,18 +5,18 @@
 			<li><%= link_to "Dashboard", home_path %> </li>
 			<li><%= link_to "Manage Accounts", user_index_path %></li>
 			<li><%= link_to "Manage Inventory", items_path %> </li>
-			<li><%= link_to "Manage Requests", contact_path %> </li>
+			<li><%= link_to "Manage Requests", requests_path %> </li>
 	
 		<% elsif current_user.role == 'coordinator' %>
 		
 			<li><%= link_to "Dashboard", home_path %> </li>
 			<li><%= link_to "Manage Inventory", items_path %> </li>
-			<li><%= link_to "Manage Requests", contact_path %> </li>
+			<li><%= link_to "Manage Requests", requests_path %> </li>
 	
 		<% else %>
 		
 			<li><%= link_to "Browse", items_path %> </li>
-			<li><%= link_to "Manage Requests", contact_path %> </li>
+			<li><%= link_to "Manage Requests", requests_path %> </li>
 			<li><%= link_to "Contact", contact_path %> </li>
 	
 		<% end %>

@@ -12,9 +12,9 @@
 
 		<% for request in @pending_requests %>  
 		  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">  
-		  	<td>&nbsp;<%= link_to request.created_at.strftime("%b %e, %Y") %></td>  
+		  	<td>&nbsp;<%= link_to request.created_at.strftime("%b %e, %Y"), request_path(request) %></td>  
 		    <td>&nbsp;<%= link_to request.requestor.name, user_path(request.requestor) %></td>
-				<td align="center">&nbsp;<%= request.production %></td>  
+				<td align="center">&nbsp;<%= link_to request.production, request_path(request) %></td>  
   			<td align="center">&nbsp;<%= request.date_needed_by.strftime("%b %e, %Y") %></td>
 				<td><%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_request_path(request)) %></td>
 		  </tr>  
@@ -23,37 +23,43 @@
 	<p>&nbsp;</p>
 <% end %>
 
-<% unless @requests.empty? %>
-<h1>Manage Requests</h1>
-<table class="datagrid">
-  <thead class="datagrid">
-		<th width="100" align="left">&nbsp;Date</th>
-		<th width="150">&nbsp;Request From</th>
-		<th width="150" align="center">&nbsp;Production</th>
-		<th width="100" align="center">&nbsp;Needed By</th>
-		<th width="100" align="center">&nbsp;Status</th>
-		<th>&nbsp;</th>
-  </thead>
+<% if current_user.is_partner? %>
+	<h1>Request History</h1>
+<% else %>
+	<h1>Manage Requests</h1>
+<% end %>
+<% if @requests.empty? %>
+	<p>There are no requests at this time.</p>
+<% else %>
+	<table class="datagrid">
+	  <thead class="datagrid">
+			<th width="100" align="left">&nbsp;Date</th>
+			<th width="150">&nbsp;Request From</th>
+			<th width="150" align="center">&nbsp;Production</th>
+			<th width="100" align="center">&nbsp;Needed By</th>
+			<th width="100" align="center">&nbsp;Status</th>
+			<th>&nbsp;</th>
+	  </thead>
 
-	<% for request in @requests %>  
-	  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">  
-	  	<td>&nbsp;<%= link_to request.created_at.strftime("%b %e, %Y") %></td>  
-	    <td>&nbsp;<%= link_to request.requestor.name, user_path(request.requestor) %></td>
-			<td align="center">&nbsp;<%= request.production %></td>  
-			<td align="center">&nbsp;<%= request.date_needed_by.strftime("%b %e, %Y") %></td>
-			<td align="center">&nbsp;<%= request.current_status %></td>
-    	<td align="center">
-				<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_request_path(request)) %>&nbsp;
-	    	<% unless request.status == 'rejected' %>
-					<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), request_path(request), :confirm => 'Are you sure you wish to delete this request?', :method => :delete) %>
-				<% end %>
-			</td>  
-	  </tr>  
-	<% end %>
-</table>
-<p class="supertiny">&nbsp;</p>
-<%= paginate @requests %>
-<p class="supertiny">&nbsp;</p>
+		<% for request in @requests %>  
+		  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">  
+		  	<td>&nbsp;<%= link_to request.created_at.strftime("%b %e, %Y"), request_path(request) %></td>  
+		    <td>&nbsp;<%= link_to request.requestor.name, user_path(request.requestor) %></td>
+				<td align="center">&nbsp;<%= link_to request.production, request_path(request) %></td>  
+				<td align="center">&nbsp;<%= request.date_needed_by.strftime("%b %e, %Y") %></td>
+				<td align="center">&nbsp;<%= request.current_status %></td>
+	    	<td align="center">
+					<%= link_to(image_tag("icons/edit_dg.gif", :border => 0), edit_request_path(request)) %>&nbsp;
+		    	<% unless request.status == 'rejected' %>
+						<%= link_to(image_tag("icons/delete_dg.gif", :border => 0), request_path(request), :confirm => 'Are you sure you wish to delete this request?', :method => :delete) %>
+					<% end %>
+				</td>  
+		  </tr>  
+		<% end %>
+	</table>
+	<p class="supertiny">&nbsp;</p>
+	<%= paginate @requests %>
+	<p class="supertiny">&nbsp;</p>
 <% end %>
 
 

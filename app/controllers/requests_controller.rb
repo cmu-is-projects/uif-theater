@@ -2,8 +2,13 @@ class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.xml
   def index
-    @requests = Request.not_pending.chronological.page(params[:page]).per(10)
-    @pending_requests = Request.pending.chronological.all
+    if current_user.is_partner?
+      @requests = Request.requests.chronological.all
+    else
+      @requests = Request.not_pending.chronological.page(params[:page]).per(10)
+      @pending_requests = Request.pending.chronological.all
+    end
+    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +20,7 @@ class RequestsController < ApplicationController
   # GET /requests/1.xml
   def show
     @request = Request.find(params[:id])
+    @items = @request.items
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,6 +32,13 @@ class RequestsController < ApplicationController
   # GET /requests/new.xml
   def new
     @request = Request.new
+    @items = session[:item_ids]
+    @request.requestor_id = current_user.id
+    if current_user.is_partner?
+      @request.status = 'pending'
+    else
+      @request.status = 'approved'
+    end 
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,6 +49,14 @@ class RequestsController < ApplicationController
   # GET /requests/1/edit
   def edit
     @request = Request.find(params[:id])
+    if !@request.items.empty?
+      @items = @request.items.map{|i| i.id}
+      session[:item_ids] = @items
+    else
+      @items = session[:item_ids]
+    end
+    @request.approver_id = current_user.id
+
   end
 
   # POST /requests
@@ -73,6 +94,27 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.update_attributes(params[:request])
+        # Have to save any changes to request items
+        @prior_items = @request.items.map{|i| i.id}
+        @current_items = session[:item_ids]
+        removed = @prior_items - @current_items
+        added = @current_items - @prior_items
+        
+        # remove ones that are deleted
+        removed.each do |item_id|
+          ri = RequestItem.find_by_item_id_and_request_id(item_id, @request.id)
+          ri.destroy
+        end
+        
+        # add any new ones
+        added.each do |item_id|
+          ri = RequestItem.new
+          ri.request_id = @request.id
+          ri.item_id = item_id
+          ri.date_checked_out = Time.now
+          ri.save!
+        end
+        
         format.html { redirect_to(@request, :notice => 'Request was successfully updated.') }
         format.xml  { head :ok }
       else

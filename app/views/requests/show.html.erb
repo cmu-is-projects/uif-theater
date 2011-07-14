@@ -1,35 +1,21 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Requestor:</b>
-  <%= @request.requestor_id %>
-</p>
+<table border="0" cellspacing="5" cellpadding="5">
+	<tr>
+		<td width="350" valign="top">
+			<h1>Request Details</h1>
+			<%= render :partial => "request_details" %>
+		</td>
+		<td width="25">&nbsp;</td>
+		<td width="350" valign="top">
+			<%= render :partial => "items_in_locations" %>
+		</td>
+	</tr>
+</table>
+<p class="supertiny">&nbsp;</p>
 
-<p>
-  <b>Production:</b>
-  <%= @request.production %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @request.status %>
-</p>
-
-<p>
-  <b>Date processed:</b>
-  <%= @request.date_processed %>
-</p>
-
-<p>
-  <b>Approver:</b>
-  <%= @request.approver_id %>
-</p>
-
-<p>
-  <b>Date needed by:</b>
-  <%= @request.date_needed_by %>
-</p>
+<%= image_tag "forms/items_actions.png" %><br/>
+<%= link_to(image_tag("icons/back_arrow.png", :border => 0), requests_path)  %>&nbsp;<%= link_to "Back to Requests", requests_path %>
 
 
-<%= link_to 'Edit', edit_request_path(@request) %> |
-<%= link_to 'Back', requests_path %>
+
+
