@@ -6,7 +6,7 @@
 	<h1>Pending Accounts</h1>
 	<table class="datagrid">
 	  <thead class="datagrid">
-			<th width="54" align="left">&nbsp;</th>
+			<th width="64" align="left">&nbsp;</th>
 	    <th width="175" align="left">&nbsp;&nbsp;Name</th>
 			<th width="200">&nbsp;Email</th>
 			<th width="100" align="center">&nbsp;Phone</th>
@@ -15,7 +15,7 @@
 
 		<% for user in @pending_users %>  
 		  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">  
-		    <td valign="center">&nbsp;<%= image_tag avatar_url(user) %></td>
+		    <td>&nbsp;<%= image_tag avatar_url(user) %></td>
 		  	<td>&nbsp;<%= link_to user.name, user_path(user) %></td>  
 		    <td>&nbsp;<%= user.email %></td>
 				<td align="center">&nbsp;<%= number_to_phone user.phone %></td>  
@@ -32,7 +32,7 @@
 <h1>Manage Accounts</h1>
 <table class="datagrid">
   <thead class="datagrid">
-		<th width="54" align="left">&nbsp;</th>
+		<th width="64" align="left">&nbsp;</th>
     <th width="175" align="left">&nbsp;&nbsp;Name</th>
 		<th width="200">&nbsp;Email</th>
 		<th width="80" align="center">&nbsp;Phone</th>
@@ -44,7 +44,7 @@
 
 	<% for user in @users %>  
 	  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">  
-	    <td valign="center">&nbsp;<%= image_tag avatar_url(user) %></td>
+	    <td>&nbsp;<%= image_tag avatar_url(user) %></td>
 	  	<td>&nbsp;<%= link_to user.name, user_path(user) %></td>  
 	    <td>&nbsp;<%= user.email %></td>
 			<td align="center">&nbsp;<%= number_to_phone user.phone %></td>  
