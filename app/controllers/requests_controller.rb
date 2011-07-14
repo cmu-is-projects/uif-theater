@@ -5,7 +5,7 @@ class RequestsController < ApplicationController
     if current_user.is_partner?
       @requests = Request.requests.chronological.all
     else
-      @requests = Request.not_pending.chronological.page(params[:page]).per(10)
+      @requests = Request.chronological.page(params[:page]).per(10)
       @pending_requests = Request.pending.chronological.all
     end
     

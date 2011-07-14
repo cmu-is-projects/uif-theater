@@ -29,7 +29,11 @@
 	<h1>Manage Requests</h1>
 <% end %>
 <% if @requests.empty? %>
-	<p>There are no requests at this time.</p>
+	<% if current_user.is_partner? %>
+		<p>You have no requests at this time.</p>
+	<% else %>
+		<p>There are no approved requests at this time.</p>
+	<% end %>
 <% else %>
 	<table class="datagrid">
 	  <thead class="datagrid">
