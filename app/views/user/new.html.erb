@@ -1,5 +1,7 @@
-<h1>Add a new user</h1>
+<h1>Add New User</h1>
 <% @this_action = 'add' %>
 <%= render 'form' %>
 
-<%= link_to 'Back', user_list_path %>
+<br/>
+<%= image_tag "forms/items_actions.png" %><br/>
+<%= link_to(image_tag("icons/back_arrow.png", :border => 0), user_list_path)  %>&nbsp;<%= link_to "Back to Users", user_list_path %>
