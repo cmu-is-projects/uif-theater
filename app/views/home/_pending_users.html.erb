@@ -3,17 +3,17 @@
 		<%= image_tag "forms/pending_accounts.png" %>
 		<table class="datagrid">
 		  <thead class="datagrid">
-		    <th width="130" align="left">&nbsp;&nbsp;Name</th>
-				<th width="110" align="center">&nbsp;Phone</th>
-				<th width="130" align="center">&nbsp;Email</th>
-				<th width="70" align="center">&nbsp;Approve?</th>
+		    <th width="200" align="left">&nbsp;&nbsp;Name</th>
+				<th width="140" align="center">&nbsp;Phone</th>
+				<!-- <th width="130" align="center">&nbsp;Email</th> -->
+				<th width="100" align="center">&nbsp;Approve?</th>
 		  </thead>
 
 			<% for user in @pending_users %>  
 			  <tr class="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">  
 			    <td>&nbsp;<%= link_to user.name, user_path(user) %></td>  
 					<td align="center">&nbsp;<%= number_to_phone user.phone %></td>
-					<td align="center">&nbsp;<%= user.email %></td>  
+					<!-- <td align="center">&nbsp;<%# user.email %></td> -->  
 		    	<td align="center">
 						<%= link_to(image_tag("icons/check_green.gif", :border => 0), approve_user_path(user)) %>&nbsp;
 			    	<%= link_to(image_tag("icons/close.gif", :border => 0), reject_user_path(user)) %>
