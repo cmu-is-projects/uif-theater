@@ -9,7 +9,9 @@
 			</span>
 		</div>
 		<div class="note_controls">
-			<%= link_to(image_tag("/images/icons/close.gif", :border => 0), delete_note_path(note), :method => :delete, :confirm => 'Delete this note?') %>
+			<% unless current_user.is_partner? %>
+				<%= link_to(image_tag("/images/icons/close.gif", :border => 0), delete_note_path(note), :method => :delete, :confirm => 'Delete this note?') %>
+			<% end %>
 		</div>
   </div>
 <% end %>
