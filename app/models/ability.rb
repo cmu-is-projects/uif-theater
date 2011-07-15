@@ -20,6 +20,8 @@ class Ability
       can :manage, Category
       can :manage, Color
       can :manage, Photo
+      can :manage, Request
+      can :manage, Return
       
     else
       can :read, Note
@@ -29,6 +31,13 @@ class Ability
       can :read, ItemCategory
       can :read, Category
       can :read, Photo
+      can :create, Request
+  	  can :update, Request do |request|
+  		  requestor.id == user.id
+  	  end
+  	  can :read, Request do |request|
+  		  requestor.id == user.id
+  	  end
     end 
   end
 end

@@ -5,7 +5,9 @@
 <% unless @items.nil? || @items.empty? %>
 	<% @items.each do |item_id| %>
 		<div class="list_item">
-				<%= link_to(image_tag("/images/icons/close.gif", :border => 0), remove_from_list_path(item_id)) %>&nbsp; 
+				<% unless @this_action == "edit" || @this_action.nil? %>
+					<%= link_to(image_tag("/images/icons/close.gif", :border => 0), remove_from_list_path(item_id)) %>&nbsp;
+				<% end %> 
 				<%= link_to "#{Item.find(item_id).name}", item_path(item_id) %>
 		</div>
 	<% end %>

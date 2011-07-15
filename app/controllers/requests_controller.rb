@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
-  # GET /requests
-  # GET /requests.xml
+  
+  before_filter :authenticate_user!
+  
   def index
     if current_user.is_partner?
       @requests = Request.requests.chronological.all
@@ -133,6 +134,10 @@ class RequestsController < ApplicationController
   # DELETE /requests/1.xml
   def destroy
     @request = Request.find(params[:id])
+    @request_items = @request.request_items
+    @request_items.each do |ri|
+      ri.destroy
+    end
     @request.destroy
 
     respond_to do |format|
