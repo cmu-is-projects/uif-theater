@@ -1,9 +1,16 @@
 class RequestsController < ApplicationController
+  
+  before_filter :authenticate_user!
+  
   # GET /requests
   # GET /requests.xml
   def index
-    @requests = Request.all
-
+    if current_user.is_partner?
+      @requests = Request.all
+    else
+      @requests = Request.all
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @requests }

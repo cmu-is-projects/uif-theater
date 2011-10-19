@@ -1,33 +1,37 @@
 <h1>Listing requests</h1>
 
-<table>
-  <tr>
-    <th>Requestor</th>
-    <th>Production</th>
-    <th>Status</th>
-    <th>Date processed</th>
-    <th>Approver</th>
-    <th>Date needed by</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<% if @requests.nil? %>
+	<p>You have no requests at this time.</p>
+<% else %>
+	<table>
+	  <tr>
+	    <th>Requestor</th>
+	    <th>Production</th>
+	    <th>Status</th>
+	    <th>Date processed</th>
+	    <th>Approver</th>
+	    <th>Date needed by</th>
+	    <th></th>
+	    <th></th>
+	    <th></th>
+	  </tr>
 
-<% @requests.each do |request| %>
-  <tr>
-    <td><%= request.requestor_id %></td>
-    <td><%= request.production %></td>
-    <td><%= request.status %></td>
-    <td><%= request.date_processed %></td>
-    <td><%= request.approver_id %></td>
-    <td><%= request.date_needed_by %></td>
-    <td><%= link_to 'Show', request %></td>
-    <td><%= link_to 'Edit', edit_request_path(request) %></td>
-    <td><%= link_to 'Destroy', request, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+	<% @requests.each do |request| %>
+	  <tr>
+	    <td><%= request.requestor_id %></td>
+	    <td><%= request.production %></td>
+	    <td><%= request.status %></td>
+	    <td><%= request.date_processed %></td>
+	    <td><%= request.approver_id %></td>
+	    <td><%= request.date_needed_by %></td>
+	    <td><%= link_to 'Show', request %></td>
+	    <td><%= link_to 'Edit', edit_request_path(request) %></td>
+	    <td><%= link_to 'Destroy', request, :confirm => 'Are you sure?', :method => :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
+
 <% end %>
-</table>
-
-<br />
+	<br />
 
 <%= link_to 'New Request', new_request_path %>

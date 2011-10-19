@@ -20,15 +20,21 @@ class Ability
       can :manage, Category
       can :manage, Color
       can :manage, Photo
+      # can :manage, Request
       
     else
       can :read, Note
+      # can :manage, Item
+      # cannot :destroy, Item
+      # cannot :update, Item
       can :read, Item
+      can :add, Item
       can :read, Gender
       can :read, ItemGender
       can :read, ItemCategory
       can :read, Category
       can :read, Photo
+      # can :create, Request
     end 
   end
 end
