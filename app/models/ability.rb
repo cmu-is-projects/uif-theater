@@ -25,7 +25,11 @@ class Ability
       
     else
       can :read, Note
+      # can :manage, Item
+      # cannot :destroy, Item
+      # cannot :update, Item
       can :read, Item
+      can :add, Item
       can :read, Gender
       can :read, ItemGender
       can :read, ItemCategory

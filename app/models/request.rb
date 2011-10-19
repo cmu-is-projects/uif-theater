@@ -22,6 +22,8 @@ class Request < ActiveRecord::Base
   scope :rejected, where('status = ?', 'rejected')
   scope :not_pending, where('status != ?', 'pending')
   scope :chronological, order('created_at DESC')
+  scope :for_requestor, lambda {|requestor_id| where('requestor_id = ?', requestor_id) }
+  
   
   # Other methods
   def current_status

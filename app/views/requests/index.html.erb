@@ -1,4 +1,5 @@
 <% @this_action = 'index' %>
+
 <% if !current_user.is_partner? && !@pending_requests.empty? %>
 	<h1>Pending Requests</h1>
 	<table class="datagrid">
@@ -28,7 +29,7 @@
 <% else %>
 	<h1>Manage Requests</h1>
 <% end %>
-<% if @requests.empty? %>
+<% if @requests.empty? || @requests.nil? %>
 	<% if current_user.is_partner? %>
 		<p>You have no requests at this time.</p>
 	<% else %>

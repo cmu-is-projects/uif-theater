@@ -4,13 +4,12 @@ class RequestsController < ApplicationController
   
   def index
     if current_user.is_partner?
-      @requests = Request.requests.chronological.all
+      @requests = Request.for_requestor(current_user.id).chronological.all
     else
       @requests = Request.chronological.page(params[:page]).per(10)
       @pending_requests = Request.pending.chronological.all
     end
     
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @requests }
